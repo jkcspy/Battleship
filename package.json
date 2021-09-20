@@ -1,0 +1,30 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "A battleship game webapp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkcspy/Battleship.git"
+  },
+  "author": "James Spencer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkcspy/Battleship/issues"
+  },
+  "homepage": "https://github.com/jkcspy/Battleship#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
+    "babel-jest": "^27.2.0",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.32.0",
+    "jest": "^27.2.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
+  }
+}
