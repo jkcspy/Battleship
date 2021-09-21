@@ -9,7 +9,7 @@ const shipFactory = (length) => {
     hitBoard.every(x => x === 1);
   }
 
-  return {hitBoard,hit, isSunk}
+  return {hitBoard, isSunk, hit}
 }
 
 export default shipFactory
