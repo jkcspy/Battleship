@@ -15,7 +15,7 @@ const shipFactory = (length) => {
 const gameBoardFactory = () => {
   const gameBoard = new Array(10).fill([new Array(10).fill('')])
 
-  return gameBoard
+  return { gameBoard }
 }
 
 export { shipFactory, gameBoardFactory }
