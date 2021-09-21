@@ -11,12 +11,40 @@ describe('ship factory tests', () => {
   });
 });
 
-describe('ship object: hit method tests', () => {
-  const exampleShip = shipFactory(3);
-  
-  test('ship hit example 1', () => {
-    expect(exampleShip.hit(1)).toBe()
+describe('ship object: hit method', () => {
+  let exampleShip;
 
+  beforeEach(()=>{
+    exampleShip = shipFactory(3);
+  })
+
+  test('ship hit example 1', () => {
+    expect(exampleShip.hit(1)).toStrictEqual([0,1,0])
+  });
+  test('ship hit example 2', () => {
+    expect(exampleShip.hit(2)).toStrictEqual([0,0,1])
+  });
+});
+
+describe('ship object:isSunk method', () => {
+  let exampleShip;
+
+  beforeEach(()=>{
+    exampleShip = shipFactory(3);
+  })
+
+
+  test('Ship not sunk example 1', () => {
+    exampleShip.hit(1);
+    exampleShip.hit(2);
+    expect(exampleShip.isSunk()).toBe(false)
+  });
+
+  test('Ship sunk example 1', () => {
+    exampleShip.hit(0);
+    exampleShip.hit(1);
+    exampleShip.hit(2);
+    expect(exampleShip.isSunk()).toBe(true)
   });
 });
 
