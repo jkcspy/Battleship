@@ -3,10 +3,11 @@ const shipFactory = (length) => {
 
   const hit = (position) => {
     hitBoard[position] = 1
+    return hitBoard
   }
 
   const isSunk = () => {
-    hitBoard.every(x => x === 1)
+    return hitBoard.every(x => x === 1)
   }
 
   return { hitBoard, isSunk, hit }
