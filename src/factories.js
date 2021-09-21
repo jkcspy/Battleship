@@ -13,7 +13,7 @@ const shipFactory = (length) => {
   return { hitBoard, isSunk, hit }
 }
 const gameBoardFactory = () => {
-  const gameBoard = new Array(10).fill([new Array(10).fill('')])
+  const gameBoard = new Array(100).fill('')
 
   return { gameBoard }
 }
