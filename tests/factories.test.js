@@ -33,7 +33,6 @@ describe('ship object:isSunk method', () => {
     exampleShip = shipFactory(3);
   })
 
-
   test('Ship not sunk example 1', () => {
     exampleShip.hit(1);
     exampleShip.hit(2);
@@ -45,6 +44,10 @@ describe('ship object:isSunk method', () => {
     exampleShip.hit(1);
     exampleShip.hit(2);
     expect(exampleShip.isSunk()).toBe(true)
+  });
+
+  test('Ship not sunk example 2', () => {
+    expect(exampleShip.isSunk()).toBe(false)
   });
 });
 
