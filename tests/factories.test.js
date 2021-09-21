@@ -1,4 +1,4 @@
-import shipFactory from "../src/factories";
+import{ shipFactory, gameBoardFactory } from "../src/factories";
 
 describe('ship factory tests', () => {
 
@@ -48,6 +48,17 @@ describe('ship object:isSunk method', () => {
 
   test('Ship not sunk example 2', () => {
     expect(exampleShip.isSunk()).toBe(false)
+  });
+});
+
+describe('gameBoard factory tests', () => {
+  test('gameBoard factory creates a 10x10 gameboard', () => {
+    const gameBoard = {gameBoard:new Array(10).fill([new Array(10).fill('')])};
+    expect(gameBoardFactory()).toMatchObject(gameBoard);
+  });
+  test('gameBoard factory not equal to wrong 2d array', () => {
+    const gameBoard = {gameBoard: [[],[],[]]};
+    expect(gameBoardFactory()).not.toMatchObject(gameBoard);
   });
 });
 
