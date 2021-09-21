@@ -53,11 +53,11 @@ describe('ship object:isSunk method', () => {
 
 describe('gameBoard factory tests', () => {
   test('gameBoard factory creates a 10x10 gameboard', () => {
-    const gameBoard = {gameBoard:new Array(10).fill([new Array(10).fill('')])};
+    const gameBoard = {gameBoard:new Array(100).fill('')};
     expect(gameBoardFactory()).toMatchObject(gameBoard);
   });
   test('gameBoard factory not equal to wrong 2d array', () => {
-    const gameBoard = {gameBoard: [[],[],[]]};
+    const gameBoard = {gameBoard: ['','']};
     expect(gameBoardFactory()).not.toMatchObject(gameBoard);
   });
 });
