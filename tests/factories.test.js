@@ -82,4 +82,10 @@ describe('gameBoard place ship tests', () => {
     expect(exampleBoard.gameBoard[0]).toBe(0);
     expect(exampleBoard.gameBoard[1]).toBe(0);
   });
+  test('place ship on board example 3', () => {
+    exampleBoard.placeShip(4,1,3,'down');
+    expect(exampleBoard.gameBoard[3]).toBe(0);
+    expect(exampleBoard.gameBoard[13]).toBe(0);
+    expect(exampleBoard.gameBoard[23]).toBe(0);
+  });
 })
