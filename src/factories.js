@@ -22,25 +22,26 @@ const gameBoardFactory = () => {
   }
 
   const placeShip = (x, y, length, direction) => {
+    const ship = shipFactory(length)
+    
      switch (direction) {
       case 'up': 
       for (let i = 0; i <= length; i++){
-        gameBoard[coordinateTranslate(x,y-i)] = 0
+        gameBoard[coordinateTranslate(x,y-i)] = ship
       }
         break
       case 'down':
         for (let i = 0; i <= length; i++){
-          gameBoard[coordinateTranslate(x,y+i)] = 0
+          gameBoard[coordinateTranslate(x,y+i)] = ship
         }
         break
       case 'left':
         for (let i = 0; i <= length; i++){
-          gameBoard[coordinateTranslate(x-i,y)] = 0
-        }
+          gameBoard[coordinateTranslate(x-i,y)] = ship        }
         break
       case 'right':
         for (let i = 0; i <= length; i++){
-          gameBoard[coordinateTranslate(x+i,y)] = 0
+          gameBoard[coordinateTranslate(x+i,y)] = ship
         }
         break
       default:
