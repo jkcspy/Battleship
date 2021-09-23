@@ -62,3 +62,19 @@ describe('gameBoard factory tests', () => {
   });
 });
 
+describe('gameBoard place ship tests', () => {
+  let exampleBoard;
+
+  beforeEach(()=>{
+    exampleBoard = gameBoardFactory();
+  });
+
+  test('place ship on board example 1', () => {
+    exampleBoard.placeShip(1,1);
+    expect(exampleBoard.gameBoard[0]).toEqual(0);
+  });
+  test('place ship on board example 2', () => {
+    exampleBoard.placeShip(2,1);
+    expect(exampleBoard.gameBoard[1]).toEqual(0);
+  });
+})
