@@ -3,11 +3,11 @@ import{ shipFactory, gameBoardFactory } from "../src/factories";
 describe('ship factory tests', () => {
 
   test('ship factory creates a ship of length 2 with hitBoard of 2', () => {
-    expect(shipFactory(2)).toMatchObject({hitBoard:[0,0]});
+    expect(shipFactory(2)).toMatchObject({hitBoard: [0, 0]});
   });
 
   test('ship factory creates a ship of length 3 with hitBoard of 3', () => {
-    expect(shipFactory(3)).toMatchObject({hitBoard:[0,0,0]});
+    expect(shipFactory(3)).toMatchObject({hitBoard: [0, 0, 0]});
   });
 });
 
@@ -19,10 +19,10 @@ describe('ship object: hit method', () => {
   })
 
   test('ship hit example 1', () => {
-    expect(exampleShip.hit(1)).toStrictEqual([0,1,0])
+    expect(exampleShip.hit(1)).toStrictEqual([0, 1, 0])
   });
   test('ship hit example 2', () => {
-    expect(exampleShip.hit(2)).toStrictEqual([0,0,1])
+    expect(exampleShip.hit(2)).toStrictEqual([0, 0, 1])
   });
 });
 
@@ -79,13 +79,32 @@ describe('gameBoard place ship tests', () => {
   });
   test('place ship on board example 3', () => {
     exampleBoard.placeShip(1,1,2,'right');
-    expect(exampleBoard.gameBoard[0]).toMatchObject({hitBoard: [0,0]});
-    expect(exampleBoard.gameBoard[1]).toMatchObject({hitBoard: [0,0]});
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitBoard: [0, 0]});
+    expect(exampleBoard.gameBoard[1]).toMatchObject({hitBoard: [0, 0]});
   });
   test('place ship on board example 3', () => {
     exampleBoard.placeShip(4,1,3,'down');
-    expect(exampleBoard.gameBoard[3]).toMatchObject({hitBoard: [0,0,0]});
-    expect(exampleBoard.gameBoard[13]).toMatchObject({hitBoard: [0,0,0]});
-    expect(exampleBoard.gameBoard[23]).toMatchObject({hitBoard: [0,0,0]});
+    expect(exampleBoard.gameBoard[3]).toMatchObject({hitBoard: [0, 0, 0]});
+    expect(exampleBoard.gameBoard[13]).toMatchObject({hitBoard: [0, 0, 0]});
+    expect(exampleBoard.gameBoard[23]).toMatchObject({hitBoard: [0, 0, 0]});
   });
+})
+
+describe('gameBoard recieve attack tests', () => {
+  let exampleBoard;
+
+  beforeEach(()=>{
+    exampleBoard = gameBoardFactory();
+    exampleBoard.placeShip(1, 1, 3, 'down');
+  });
+
+  test('game board recieves attack on empty space ex.1', () => {
+    exampleBoard.recieveAttack(5,5);
+    expect(exampleBoard.gameBoard[44]).toBe('x');
+  })
+
+  test('game board recieves attack on empty space ex.1', () => {
+    exampleBoard.recieveAttack(5,4);
+    expect(exampleBoard.gameBoard[34]).toBe('x');
+  })
 })
