@@ -21,8 +21,31 @@ const gameBoardFactory = () => {
     return arrayIndex
   }
 
-  const placeShip = (x, y) => {
-    gameBoard[coordinateTranslate(x,y)] = 0
+  const placeShip = (x, y, length, direction) => {
+     switch (direction) {
+      case 'up': 
+      for (let i = 0; i <= length; i++){
+        gameBoard[coordinateTranslate(x,y-i)] = 0
+      }
+        break
+      case 'down':
+        for (let i = 0; i <= length; i++){
+          gameBoard[coordinateTranslate(x,y+i)] = 0
+        }
+        break
+      case 'left':
+        for (let i = 0; i <= length; i++){
+          gameBoard[coordinateTranslate(x-i,y)] = 0
+        }
+        break
+      case 'right':
+        for (let i = 0; i <= length; i++){
+          gameBoard[coordinateTranslate(x+i,y)] = 0
+        }
+        break
+      default:
+        console.log('Error:invalid direction for ship placement')
+    }
     return gameBoard
   }
 
