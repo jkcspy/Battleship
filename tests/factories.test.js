@@ -71,10 +71,15 @@ describe('gameBoard place ship tests', () => {
 
   test('place ship on board example 1', () => {
     exampleBoard.placeShip(1,1);
-    expect(exampleBoard.gameBoard[0]).toEqual(0);
+    expect(exampleBoard.gameBoard[0]).toBe(0);
   });
   test('place ship on board example 2', () => {
     exampleBoard.placeShip(2,1);
-    expect(exampleBoard.gameBoard[1]).toEqual(0);
+    expect(exampleBoard.gameBoard[1]).toBe(0);
+  });
+  test('place ship on board example 3', () => {
+    exampleBoard.placeShip(1,1,2,'right');
+    expect(exampleBoard.gameBoard[0]).toBe(0);
+    expect(exampleBoard.gameBoard[1]).toBe(0);
   });
 })
