@@ -70,11 +70,11 @@ describe('gameBoard place ship tests', () => {
   });
 
   test('place ship on board example 1', () => {
-    exampleBoard.placeShip(1,1);
+    exampleBoard.placeShip(1,1,1,'up');
     expect(exampleBoard.gameBoard[0]).toBe(0);
   });
   test('place ship on board example 2', () => {
-    exampleBoard.placeShip(2,1);
+    exampleBoard.placeShip(2,1,1,'up');
     expect(exampleBoard.gameBoard[1]).toBe(0);
   });
   test('place ship on board example 3', () => {
