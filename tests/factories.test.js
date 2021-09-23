@@ -71,22 +71,22 @@ describe('gameBoard place ship tests', () => {
 
   test('place ship on board example 1', () => {
     exampleBoard.placeShip(1,1,1,'up');
-    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, ship: {hitBoard: [0]} });
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: false, ship: {hitBoard: [0]} });
   });
   test('place ship on board example 2', () => {
     exampleBoard.placeShip(2,1,1,'up');
-    expect(exampleBoard.gameBoard[1]).toMatchObject({hitIndex: 0, ship: {hitBoard: [0]} });
+    expect(exampleBoard.gameBoard[1]).toMatchObject({hitIndex: 0, isHit: false, ship: {hitBoard: [0]} });
   });
   test('place ship on board example 3', () => {
     exampleBoard.placeShip(1,1,2,'right');
-    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, ship: {hitBoard: [0, 0]} });
-    expect(exampleBoard.gameBoard[1]).toMatchObject({hitIndex: 1, ship: {hitBoard: [0, 0]} });
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: false, ship: {hitBoard: [0, 0]} });
+    expect(exampleBoard.gameBoard[1]).toMatchObject({hitIndex: 1, isHit: false, ship: {hitBoard: [0, 0]} });
   });
   test('place ship on board example 3', () => {
     exampleBoard.placeShip(4,1,3,'down');
-    expect(exampleBoard.gameBoard[3]).toMatchObject({hitIndex: 0, ship: {hitBoard: [0, 0, 0]} });
-    expect(exampleBoard.gameBoard[13]).toMatchObject({hitIndex: 1, ship: {hitBoard: [0, 0, 0]} });
-    expect(exampleBoard.gameBoard[23]).toMatchObject({hitIndex: 2, ship: {hitBoard: [0, 0, 0]} });
+    expect(exampleBoard.gameBoard[3]).toMatchObject({hitIndex: 0, isHit: false, ship: {hitBoard: [0, 0, 0]} });
+    expect(exampleBoard.gameBoard[13]).toMatchObject({hitIndex: 1, isHit: false, ship: {hitBoard: [0, 0, 0]} });
+    expect(exampleBoard.gameBoard[23]).toMatchObject({hitIndex: 2, isHit: false, ship: {hitBoard: [0, 0, 0]} });
   });
 })
 
@@ -109,10 +109,10 @@ describe('gameBoard recieve attack tests', () => {
 
   test('game board recieves attack on ship ex 1', () => {
     exampleBoard.recieveAttack(1,1);
-    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, ship: {hitBoard: [1, 0, 0]} });
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: true, ship: {hitBoard: [1, 0, 0]} });
   })
   test('game board recieves attack on ship ex 2', () => {
     exampleBoard.recieveAttack(1,3);
-    expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, ship: {hitBoard: [0, 0, 1]} });
+    expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, isHit: true, ship: {hitBoard: [0, 0, 1]} });
   })
 })
