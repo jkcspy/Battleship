@@ -56,7 +56,7 @@ describe('gameBoard factory tests', () => {
     const gameBoard = {gameBoard:new Array(100).fill('')};
     expect(gameBoardFactory()).toMatchObject(gameBoard);
   });
-  test('gameBoard factory not equal to wrong 2d array', () => {
+  test('gameBoard factory not equal to wrong array', () => {
     const gameBoard = {gameBoard: ['','']};
     expect(gameBoardFactory()).not.toMatchObject(gameBoard);
   });
