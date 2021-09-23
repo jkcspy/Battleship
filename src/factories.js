@@ -26,16 +26,16 @@ const gameBoardFactory = () => {
 
      switch (direction) {
       case 'up': 
-      for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x,y-i)] = ship }
+      for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x,y-i)] = {hitIndex: i, ship: ship} }
         break
       case 'down':
-        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x,y+i)] = ship }
+        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x,y+i)] = {hitIndex: i, ship: ship} }
         break
       case 'left':
-        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x-i,y)] = ship }
+        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x-i,y)] = {hitIndex: i, ship: ship} }
         break
       case 'right':
-        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x+i,y)] = ship }
+        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x+i,y)] = {hitIndex: i, ship: ship} }
         break
       default:
         console.log('Error:invalid direction for ship placement')
@@ -47,7 +47,7 @@ const gameBoardFactory = () => {
     if (gameBoard[coordinateTranslate(x,y)] === '') {
       gameBoard[coordinateTranslate(x,y)] = 'x'
     }else {
-      gameBoard[coordinateTranslate(x,y)].hit()
+      gameBoard[coordinateTranslate(x,y)].ship.hit(gameBoard[coordinateTranslate(x,y)].hitIndex)
     }
   }
 
