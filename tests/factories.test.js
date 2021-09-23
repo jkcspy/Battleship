@@ -101,10 +101,18 @@ describe('gameBoard recieve attack tests', () => {
   test('game board recieves attack on empty space ex.1', () => {
     exampleBoard.recieveAttack(5,5);
     expect(exampleBoard.gameBoard[44]).toBe('x');
-  })
-
+  });
   test('game board recieves attack on empty space ex.2', () => {
     exampleBoard.recieveAttack(5,4);
     expect(exampleBoard.gameBoard[34]).toBe('x');
+  });
+
+  test('game board recieves attack on ship ex 1', () => {
+    exampleBoard.recieveAttack(1,1);
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, ship: {hitBoard: [1, 0, 0]} });
+  })
+  test('game board recieves attack on ship ex 2', () => {
+    exampleBoard.recieveAttack(1,3);
+    expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, ship: {hitBoard: [0, 0, 1]} });
   })
 })
