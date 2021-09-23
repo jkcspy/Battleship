@@ -71,21 +71,21 @@ describe('gameBoard place ship tests', () => {
 
   test('place ship on board example 1', () => {
     exampleBoard.placeShip(1,1,1,'up');
-    expect(exampleBoard.gameBoard[0]).toBe(0);
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitBoard: [0]});
   });
   test('place ship on board example 2', () => {
     exampleBoard.placeShip(2,1,1,'up');
-    expect(exampleBoard.gameBoard[1]).toBe(0);
+    expect(exampleBoard.gameBoard[1]).toMatchObject({hitBoard: [0]});
   });
   test('place ship on board example 3', () => {
     exampleBoard.placeShip(1,1,2,'right');
-    expect(exampleBoard.gameBoard[0]).toBe(0);
-    expect(exampleBoard.gameBoard[1]).toBe(0);
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitBoard: [0,0]});
+    expect(exampleBoard.gameBoard[1]).toMatchObject({hitBoard: [0,0]});
   });
   test('place ship on board example 3', () => {
     exampleBoard.placeShip(4,1,3,'down');
-    expect(exampleBoard.gameBoard[3]).toBe(0);
-    expect(exampleBoard.gameBoard[13]).toBe(0);
-    expect(exampleBoard.gameBoard[23]).toBe(0);
+    expect(exampleBoard.gameBoard[3]).toMatchObject({hitBoard: [0,0,0]});
+    expect(exampleBoard.gameBoard[13]).toMatchObject({hitBoard: [0,0,0]});
+    expect(exampleBoard.gameBoard[23]).toMatchObject({hitBoard: [0,0,0]});
   });
 })
