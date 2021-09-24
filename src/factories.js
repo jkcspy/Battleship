@@ -1,14 +1,14 @@
 const shipFactory = (length) => {
   const hitBoard = new Array(length).fill(0)
-  let sunk = false
+  const sunk = [false] //TODO why does this only work in array and not as variable?
 
   const isSunk = () => {
-    return hitBoard.every(x => x === 1)
+    sunk[0] = hitBoard.every(x => x === 1)
   }
 
   const hit = (position) => {
     hitBoard[position] = 1
-    sunk = isSunk()
+    isSunk()
   }
 
   return { hitBoard, sunk, hit }
