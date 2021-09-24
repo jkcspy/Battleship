@@ -19,10 +19,12 @@ describe('ship object: hit method', () => {
   })
 
   test('ship hit example 1', () => {
-    expect(exampleShip.hit(1)).toStrictEqual([0, 1, 0])
+    exampleShip.hit(1);
+    expect(exampleShip.hitBoard).toStrictEqual([0, 1, 0]);
   });
   test('ship hit example 2', () => {
-    expect(exampleShip.hit(2)).toStrictEqual([0, 0, 1])
+    exampleShip.hit(2);
+    expect(exampleShip.hitBoard).toStrictEqual([0, 0, 1]);
   });
 });
 
