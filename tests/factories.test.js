@@ -28,31 +28,6 @@ describe('ship object: hit method', () => {
   });
 });
 
-describe('ship object:isSunk method', () => {
-  let exampleShip;
-
-  beforeEach(()=>{
-    exampleShip = shipFactory(3);
-  })
-
-  test('Ship not sunk example 1', () => {
-    exampleShip.hit(1);
-    exampleShip.hit(2);
-    expect(exampleShip.isSunk()).toBe(false)
-  });
-
-  test('Ship sunk example 1', () => {
-    exampleShip.hit(0);
-    exampleShip.hit(1);
-    exampleShip.hit(2);
-    expect(exampleShip.isSunk()).toBe(true)
-  });
-
-  test('Ship not sunk example 2', () => {
-    expect(exampleShip.isSunk()).toBe(false)
-  });
-});
-
 describe('gameBoard factory tests', () => {
   test('gameBoard factory creates a 10x10 gameboard', () => {
     const gameBoard = {gameBoard:new Array(100).fill('')};
