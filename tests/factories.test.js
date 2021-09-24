@@ -132,8 +132,8 @@ describe('check if all ships on baord sunk tests', () => {
   test('all ships sunk 1', () =>{
     exampleBoard.recieveAttack(5,5);
     exampleBoard.recieveAttack(1,1);
-    exampleBoard.recieveAttack(2,1);
-    exampleBoard.recieveAttack(3,1);
+    exampleBoard.recieveAttack(1,2);
+    exampleBoard.recieveAttack(1,3);
 
     expect(exampleBoard.checkAllSunk()).toBe(true)
   })
