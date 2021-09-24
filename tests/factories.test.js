@@ -104,4 +104,14 @@ describe('gameBoard recieve attack tests', () => {
     expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: true, ship: {hitBoard: [1, 1, 1], sunk: true} });
     expect(exampleBoard.gameBoard[34]).toBe('x');
   })
+  test('gameboard recieves many hits ex 2', () => {
+    exampleBoard.recieveAttack(1,1);
+    exampleBoard.recieveAttack(5,4);
+    exampleBoard.recieveAttack(1,2);
+
+    expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, isHit: false, ship: {hitBoard: [1, 1, 0], sunk: false} });
+    expect(exampleBoard.gameBoard[10]).toMatchObject({hitIndex: 1, isHit: true, ship: {hitBoard: [1, 1, 0], sunk: false} });
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: true, ship: {hitBoard: [1, 1, 0], sunk: false} });
+    expect(exampleBoard.gameBoard[34]).toBe('x');
+  })
 })
