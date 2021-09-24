@@ -1,6 +1,6 @@
 const shipFactory = (length) => {
   const hitBoard = new Array(length).fill(0)
-  const sunk = [false] //TODO why does this only work in array and not as variable?
+  const sunk = [false] // this works as array is mutable but primitive is not and obj on gameboard is a reference.
 
   const isSunk = () => {
     sunk[0] = hitBoard.every(x => x === 1)
@@ -52,7 +52,13 @@ const gameBoardFactory = () => {
     }
   }
 
-  return { gameBoard, placeShip, recieveAttack }
+  const checkAllSunk = () => {
+    const allShips = gameBoard.filter(e => typeof e === 'object' && typeof e.ship === 'object')
+
+    return allShips.every(x => x.ship.sunk[0] === true)
+  }
+
+  return { gameBoard, placeShip, recieveAttack, checkAllSunk }
 }
 
 export { shipFactory, gameBoardFactory }
