@@ -1,10 +1,10 @@
 const shipFactory = (length) => {
   const hitBoard = new Array(length).fill(0)
-  const sunk = false
+  let sunk = false
 
   const hit = (position) => {
     hitBoard[position] = 1
-    return hitBoard
+    sunk = isSunk()
   }
 
   const isSunk = () => {
