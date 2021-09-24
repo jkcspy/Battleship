@@ -1,5 +1,6 @@
 const shipFactory = (length) => {
   const hitBoard = new Array(length).fill(0)
+  const sunk = false
 
   const hit = (position) => {
     hitBoard[position] = 1
@@ -10,7 +11,7 @@ const shipFactory = (length) => {
     return hitBoard.every(x => x === 1)
   }
 
-  return { hitBoard, isSunk, hit }
+  return { hitBoard, sunk, isSunk, hit }
 }
 
 const gameBoardFactory = () => {
