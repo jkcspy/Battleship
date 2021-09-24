@@ -116,7 +116,7 @@ describe('gameBoard recieve attack tests', () => {
   })
 })
 
-describe('check if all ships on baord sunk tests', () => {
+describe('check if all ships on board sunk tests', () => {
   let exampleBoard;
 
   beforeEach(()=>{
@@ -128,6 +128,13 @@ describe('check if all ships on baord sunk tests', () => {
   test('all ships not sunk 1' , () =>{
     expect(exampleBoard.checkAllSunk()).toBe(false)
   })
+  test('all ships not sunk 2', () =>{
+    exampleBoard.recieveAttack(5,5);
+    exampleBoard.recieveAttack(1,1);
+    exampleBoard.recieveAttack(1,3);
+
+    expect(exampleBoard.checkAllSunk()).toBe(false)
+  })
 
   test('all ships sunk 1', () =>{
     exampleBoard.recieveAttack(5,5);
@@ -136,5 +143,26 @@ describe('check if all ships on baord sunk tests', () => {
     exampleBoard.recieveAttack(1,3);
 
     expect(exampleBoard.checkAllSunk()).toBe(true)
+  })
+
+  test('all ships sunk with extra missing attacks', () =>{
+    exampleBoard.recieveAttack(5,5);
+    exampleBoard.recieveAttack(1,1);
+    exampleBoard.recieveAttack(1,2);
+    exampleBoard.recieveAttack(1,3);
+    exampleBoard.recieveAttack(10,9);
+    exampleBoard.recieveAttack(9,7);
+
+    expect(exampleBoard.checkAllSunk()).toBe(true)
+  })
+
+  test('all ships not sunk with extra missing attacks', () =>{
+    exampleBoard.recieveAttack(1,1);
+    exampleBoard.recieveAttack(1,2);
+    exampleBoard.recieveAttack(1,3);
+    exampleBoard.recieveAttack(10,9);
+    exampleBoard.recieveAttack(9,7);
+
+    expect(exampleBoard.checkAllSunk()).toBe(false)
   })
 })
