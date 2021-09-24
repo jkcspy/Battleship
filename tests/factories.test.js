@@ -115,3 +115,26 @@ describe('gameBoard recieve attack tests', () => {
     expect(exampleBoard.gameBoard[34]).toBe('x');
   })
 })
+
+describe('check if all ships on baord sunk tests', () => {
+  let exampleBoard;
+
+  beforeEach(()=>{
+    exampleBoard = gameBoardFactory();
+    exampleBoard.placeShip(1, 1, 3, 'down');
+    exampleBoard.placeShip(5, 5, 1, 'down');
+  });
+
+  test('all ships not sunk 1' , () =>{
+    expect(exampleBoard.checkAllSunk()).toBe(false)
+  })
+
+  test('all ships sunk 1', () =>{
+    exampleBoard.recieveAttack(5,5);
+    exampleBoard.recieveAttack(1,1);
+    exampleBoard.recieveAttack(2,1);
+    exampleBoard.recieveAttack(3,1);
+
+    expect(exampleBoard.checkAllSunk()).toBe(true)
+  })
+})
