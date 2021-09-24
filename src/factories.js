@@ -41,7 +41,6 @@ const gameBoardFactory = () => {
       default:
         console.log('Error:invalid direction for ship placement')
     }
-    return gameBoard
   }
 
   const recieveAttack = (x, y) => {
