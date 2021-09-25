@@ -191,4 +191,21 @@ describe('player factory attack gameboard method tests', () => {
 
     expect(exampleBoard.gameBoard[22]).toBe('x');
   })
+
+  test('attack method works on ship cell', () => {
+    player.attack(1,1, exampleBoard);
+
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: true, ship: {hitBoard: [1, 0, 0], sunk: [false]} });
+  })
+
+  test('attack method many hits ship not sunk', () => {
+    player.attack(1,1,exampleBoard);
+    player.attack(5,4, exampleBoard);
+    player.attack(1,2, exampleBoard);
+
+    expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, isHit: false, ship: {hitBoard: [1, 1, 0], sunk: [false]} });
+    expect(exampleBoard.gameBoard[10]).toMatchObject({hitIndex: 1, isHit: true, ship: {hitBoard: [1, 1, 0], sunk: [false]} });
+    expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: true, ship: {hitBoard: [1, 1, 0], sunk: [false]} });
+    expect(exampleBoard.gameBoard[34]).toBe('x');
+  });
 })
