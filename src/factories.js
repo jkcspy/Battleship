@@ -1,3 +1,5 @@
+import coordinateTranslate from "./utils"
+
 const shipFactory = (length) => {
   const hitBoard = new Array(length).fill(0)
   const sunk = [false] // this works as array is mutable but primitive is not and obj on gameboard is a reference.
@@ -16,11 +18,6 @@ const shipFactory = (length) => {
 
 const gameBoardFactory = () => {
   const gameBoard = new Array(100).fill('')
-
-  const coordinateTranslate = (x, y) => { 
-    const arrayIndex = ((y-1)*10) + (x-1)
-    return arrayIndex
-  }
 
   const placeShip = (x, y, length, direction) => {
     const ship = shipFactory(length)
@@ -61,4 +58,12 @@ const gameBoardFactory = () => {
   return { gameBoard, placeShip, recieveAttack, checkAllSunk }
 }
 
-export { shipFactory, gameBoardFactory }
+const playerFactory = (name) => {
+  const attack = (x,y,targetBoard) => {
+    targetBoard.recieveAttack(x,y)
+  }
+
+  return { name, attack }
+}
+
+export { shipFactory, gameBoardFactory, playerFactory }
