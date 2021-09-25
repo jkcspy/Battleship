@@ -1,4 +1,4 @@
-import{ shipFactory, gameBoardFactory } from "../src/factories";
+import{ shipFactory, gameBoardFactory, playerFactory } from "../src/factories";
 
 describe('ship factory tests', () => {
 
@@ -164,5 +164,31 @@ describe('check if all ships on board sunk tests', () => {
     exampleBoard.recieveAttack(9,7);
 
     expect(exampleBoard.checkAllSunk()).toBe(false)
+  })
+})
+
+describe('player factory creates player test', () => {
+  test('player factory creates player 1', () => {
+    expect(playerFactory('player 1')).toMatchObject({name: 'player 1'})
+  });
+  test('player factory creates player 2', () => {
+    expect(playerFactory('player 2')).toMatchObject({name: 'player 2'})
+  })
+});
+
+describe('player factory attack gameboard method tests', () => {
+  let exampleBoard;
+  let player = playerFactory('player');
+
+  beforeEach(()=>{
+    exampleBoard = gameBoardFactory();
+    exampleBoard.placeShip(1, 1, 3, 'down');
+    exampleBoard.placeShip(5, 5, 1, 'down');
+  });
+
+  test('attack method works on empty cell', () => {
+    player.attack(3,3, exampleBoard);
+
+    expect(exampleBoard.gameBoard[22]).toBe('x');
   })
 })
