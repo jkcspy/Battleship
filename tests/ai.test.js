@@ -28,6 +28,10 @@ describe('tests for checkMove function', () => {
   test('check if true for not struck', () => {
     expect(ai.checkMove(1,2)).toBe(true)
   })
+
+  test('check if true for not struck 2', () => {
+    expect(ai.checkMove(2,1)).toBe(true)
+  })
 })
 
 describe('ai does not strike same place twice tests', () => {
