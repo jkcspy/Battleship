@@ -2,7 +2,7 @@ const ai = {
   moveList: [],
 
   checkMove: (x,y) => {
-    return ai.moveList.every( i => (i.x !== x) && (i.y !== y))
+    return ai.moveList.every( i => (i.x !== x) || (i.y !== y))
   },
 
   computerTurn: () => {
