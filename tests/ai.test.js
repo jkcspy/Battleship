@@ -1,10 +1,6 @@
 import ai from "../src/ai";
 
 describe('tests for AI random moves', () => {
-  beforeEach(() => {
-    ai.moveList = []
-  })
-
   test('ai returns random coordiantes', () => {
     const moveObject = ai.computerTurn()
 
@@ -13,4 +9,10 @@ describe('tests for AI random moves', () => {
     expect(moveObject.y).toBeGreaterThanOrEqual(0)
     expect(moveObject.y).toBeLessThanOrEqual(10)
   })
+
+  test('moves are integers', () => {
+    const moveObject = ai.computerTurn()
+    expect(Number.isInteger(moveObject.x)).toBe(true)
+  })
 })
+
