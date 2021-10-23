@@ -1,9 +1,11 @@
 const ai = {
    moveList : [],
    computerTurn: () => {
+     const xFloat = Math.random()*10
+     const yFloat = Math.random()*10
      return {
-      x: Math.random()*10,
-      y: Math.random()*10
+      x: Math.round(xFloat),
+      y: Math.round(yFloat)
     }
    }
 }
