@@ -34,6 +34,14 @@ describe('tests for checkMove function', () => {
   })
 })
 
+describe('computerTurn adds move to moveList', () => {
+  
+})
+
+describe('clear move list function', () => {
+
+})
+
 describe('ai does not strike same place twice tests', () => {
 
 })
