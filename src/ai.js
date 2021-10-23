@@ -1,6 +1,10 @@
 const ai = {
   moveList: [],
 
+  clearMoveList: () => {
+    ai.moveList.splice(0, ai.moveList.length) // Clears the actual array rather than new array or leaving in memory
+  },
+
   checkMove: (x,y) => {
     return ai.moveList.every( i => (i.x !== x) || (i.y !== y))
   },
@@ -14,6 +18,7 @@ const ai = {
 
       if(ai.checkMove(x,y)) {
         ai.validMoveFound = true
+        ai.moveList.push({ x, y })
         return { x, y }
       }
     }
