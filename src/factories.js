@@ -40,7 +40,7 @@ const gameBoardFactory = () => {
     }
   }
 
-  const recieveAttack = (x, y) => {
+  const receiveAttack = (x, y) => {
     if (gameBoard[coordinateTranslate(x,y)] === '') {
       gameBoard[coordinateTranslate(x,y)] = 'x'
     }else {
@@ -55,12 +55,12 @@ const gameBoardFactory = () => {
     return allShips.every(x => x.ship.sunk[0] === true)
   }
 
-  return { gameBoard, placeShip, recieveAttack, checkAllSunk }
+  return { gameBoard, placeShip, receiveAttack: receiveAttack, checkAllSunk }
 }
 
 const playerFactory = (name) => {
   const attack = (x,y,targetBoard) => {
-    targetBoard.recieveAttack(x,y)
+    targetBoard.receiveAttack(x,y)
   }
 
   return { name, attack }
