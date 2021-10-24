@@ -35,6 +35,16 @@ describe('tests for checkMove function', () => {
 })
 
 describe('computerTurn adds move to moveList', () => {
+  test('check one move added to list', ()=>{
+    ai.computerTurn()
+    expect(ai.moveList.length).toBe(1)
+  })
+
+  test('check 2 moves added to list', () => {
+    ai.computerTurn()
+    ai.computerTurn()
+    expect(ai.moveList.length).toBe(2)
+  } )
 
 })
 
@@ -52,8 +62,3 @@ describe('clear move list function', () => {
     expect(ai.moveList).toEqual([{x:1,y:1},{x:3,y:3}])
   })
 })
-
-describe('ai does not strike same place twice tests', () => {
-
-})
-
