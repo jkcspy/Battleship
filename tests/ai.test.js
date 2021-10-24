@@ -35,11 +35,22 @@ describe('tests for checkMove function', () => {
 })
 
 describe('computerTurn adds move to moveList', () => {
-  
+
 })
 
 describe('clear move list function', () => {
+  beforeEach(()=> {
+    ai.moveList = [{x:1,y:1},{x:3,y:3}]
+  })
 
+  test('check if clearMoveList clears moveList', () => {
+    ai.clearMoveList()
+    expect(ai.moveList).toEqual([])
+  })
+
+  test('check if not cleared when no function call', () => {
+    expect(ai.moveList).toEqual([{x:1,y:1},{x:3,y:3}])
+  })
 })
 
 describe('ai does not strike same place twice tests', () => {
