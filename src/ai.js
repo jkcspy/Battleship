@@ -9,7 +9,7 @@ const ai = {
     return ai.moveList.every( i => (i.x !== x) || (i.y !== y))
   },
 
-  computerTurn: () => {
+  computerTurn: () => { // pushes 2 objects to moveList but why?
     const validMoveFound = false
 
     while(!validMoveFound) {
