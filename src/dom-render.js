@@ -14,6 +14,11 @@ const renderPlayerGrid = (gameBoardObject) => {
   const grid = document.querySelector('.grid-1')
   let count = 0
 
+
+  grid.children.forEach(item => {
+    item.className = '' // clear classes from previous turns
+  })
+
   gameBoardObject.gameBoard.forEach(item => {
     if(item === 'x'){
       grid.children[count].classList.add('miss')
@@ -31,6 +36,10 @@ const renderPlayerGrid = (gameBoardObject) => {
 const renderOpponentGrid = (gameBoardObject) => {
   const grid = document.querySelector('.grid-2')
   let count = 0
+
+  grid.children.forEach(item => {
+    item.className = '' // clear classes from previous turns
+  })
 
   gameBoardObject.gameBoard.forEach(item => {
     if(item === 'x'){
