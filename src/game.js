@@ -1,4 +1,5 @@
 import { playerFactory, gameBoardFactory } from "./factories";
+import { renderPlayerGrid, renderOpponentGrid } from "./dom-render";
 
 const initGame = () => {
   const playerOne = playerFactory('Player 1')
@@ -26,5 +27,7 @@ const gameLoop = () => {
     //inputs
     //update
     //render
+    renderPlayerGrid()
+    renderOpponentGrid()
   }
 }
