@@ -14,7 +14,6 @@ const renderPlayerGrid = (gameBoardObject) => {
   const grid = document.querySelector('.grid-1')
   let count = 0
 
-
   grid.children.forEach(item => {
     item.className = '' // clear classes from previous turns
   })
