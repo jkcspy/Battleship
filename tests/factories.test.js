@@ -67,7 +67,7 @@ describe('gameBoard place ship tests', () => {
   });
 })
 
-describe('gameBoard recieve attack tests', () => {
+describe('gameBoard receive attack tests', () => {
   let exampleBoard;
 
   beforeEach(()=>{
@@ -79,21 +79,21 @@ describe('gameBoard recieve attack tests', () => {
     exampleBoard.receiveAttack(5,5);
     expect(exampleBoard.gameBoard[44]).toBe('x');
   });
-  test('game board recieves attack on empty space ex.2', () => {
+  test('game board receives attack on empty space ex.2', () => {
     exampleBoard.receiveAttack(5,4);
     expect(exampleBoard.gameBoard[34]).toBe('x');
   });
 
-  test('game board recieves attack on ship ex 1', () => {
+  test('game board receives attack on ship ex 1', () => {
     exampleBoard.receiveAttack(1,1);
     expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: true, ship: {hitBoard: [1, 0, 0], sunk: [false]} });
   })
-  test('game board recieves attack on ship ex 2', () => {
+  test('game board receives attack on ship ex 2', () => {
     exampleBoard.receiveAttack(1,3);
     expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, isHit: true, ship: {hitBoard: [0, 0, 1], sunk: [false]} });
   })
 
-  test('gameboard recieves many hits ex 1 ship sunk', () => {
+  test('gameboard receives many hits ex 1 ship sunk', () => {
     exampleBoard.receiveAttack(1,1);
     exampleBoard.receiveAttack(1,3);
     exampleBoard.receiveAttack(5,4);
@@ -104,7 +104,7 @@ describe('gameBoard recieve attack tests', () => {
     expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: true, ship: {hitBoard: [1, 1, 1], sunk: [true]} });
     expect(exampleBoard.gameBoard[34]).toBe('x');
   })
-  test('gameboard recieves many hits ex 2 ship not sunk', () => {
+  test('gameboard receives many hits ex 2 ship not sunk', () => {
     exampleBoard.receiveAttack(1,1);
     exampleBoard.receiveAttack(5,4);
     exampleBoard.receiveAttack(1,2);
