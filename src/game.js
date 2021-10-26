@@ -19,7 +19,7 @@ const initGame = () => {
 const gameLoop = () => {
   // init 
   const newGame = initGame()
-  const game = true
+  const game = true //for terminating loop
 
   //loop
   while(game){
