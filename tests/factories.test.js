@@ -75,29 +75,29 @@ describe('gameBoard recieve attack tests', () => {
     exampleBoard.placeShip(1, 1, 3, 'down');
   });
 
-  test('game board recieves attack on empty space ex.1', () => {
-    exampleBoard.recieveAttack(5,5);
+  test('game board receives attack on empty space ex.1', () => {
+    exampleBoard.receiveAttack(5,5);
     expect(exampleBoard.gameBoard[44]).toBe('x');
   });
   test('game board recieves attack on empty space ex.2', () => {
-    exampleBoard.recieveAttack(5,4);
+    exampleBoard.receiveAttack(5,4);
     expect(exampleBoard.gameBoard[34]).toBe('x');
   });
 
   test('game board recieves attack on ship ex 1', () => {
-    exampleBoard.recieveAttack(1,1);
+    exampleBoard.receiveAttack(1,1);
     expect(exampleBoard.gameBoard[0]).toMatchObject({hitIndex: 0, isHit: true, ship: {hitBoard: [1, 0, 0], sunk: [false]} });
   })
   test('game board recieves attack on ship ex 2', () => {
-    exampleBoard.recieveAttack(1,3);
+    exampleBoard.receiveAttack(1,3);
     expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, isHit: true, ship: {hitBoard: [0, 0, 1], sunk: [false]} });
   })
 
   test('gameboard recieves many hits ex 1 ship sunk', () => {
-    exampleBoard.recieveAttack(1,1);
-    exampleBoard.recieveAttack(1,3);
-    exampleBoard.recieveAttack(5,4);
-    exampleBoard.recieveAttack(1,2);
+    exampleBoard.receiveAttack(1,1);
+    exampleBoard.receiveAttack(1,3);
+    exampleBoard.receiveAttack(5,4);
+    exampleBoard.receiveAttack(1,2);
 
     expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, isHit: true, ship: {hitBoard: [1, 1, 1], sunk: [true]} });
     expect(exampleBoard.gameBoard[10]).toMatchObject({hitIndex: 1, isHit: true, ship: {hitBoard: [1, 1, 1], sunk: [true]} });
@@ -105,9 +105,9 @@ describe('gameBoard recieve attack tests', () => {
     expect(exampleBoard.gameBoard[34]).toBe('x');
   })
   test('gameboard recieves many hits ex 2 ship not sunk', () => {
-    exampleBoard.recieveAttack(1,1);
-    exampleBoard.recieveAttack(5,4);
-    exampleBoard.recieveAttack(1,2);
+    exampleBoard.receiveAttack(1,1);
+    exampleBoard.receiveAttack(5,4);
+    exampleBoard.receiveAttack(1,2);
 
     expect(exampleBoard.gameBoard[20]).toMatchObject({hitIndex: 2, isHit: false, ship: {hitBoard: [1, 1, 0], sunk: [false]} });
     expect(exampleBoard.gameBoard[10]).toMatchObject({hitIndex: 1, isHit: true, ship: {hitBoard: [1, 1, 0], sunk: [false]} });
@@ -129,39 +129,39 @@ describe('check if all ships on board sunk tests', () => {
     expect(exampleBoard.checkAllSunk()).toBe(false)
   })
   test('all ships not sunk 2', () =>{
-    exampleBoard.recieveAttack(5,5);
-    exampleBoard.recieveAttack(1,1);
-    exampleBoard.recieveAttack(1,3);
+    exampleBoard.receiveAttack(5,5);
+    exampleBoard.receiveAttack(1,1);
+    exampleBoard.receiveAttack(1,3);
 
     expect(exampleBoard.checkAllSunk()).toBe(false)
   })
 
   test('all ships sunk 1', () =>{
-    exampleBoard.recieveAttack(5,5);
-    exampleBoard.recieveAttack(1,1);
-    exampleBoard.recieveAttack(1,2);
-    exampleBoard.recieveAttack(1,3);
+    exampleBoard.receiveAttack(5,5);
+    exampleBoard.receiveAttack(1,1);
+    exampleBoard.receiveAttack(1,2);
+    exampleBoard.receiveAttack(1,3);
 
     expect(exampleBoard.checkAllSunk()).toBe(true)
   })
 
   test('all ships sunk with extra missing attacks', () =>{
-    exampleBoard.recieveAttack(5,5);
-    exampleBoard.recieveAttack(1,1);
-    exampleBoard.recieveAttack(1,2);
-    exampleBoard.recieveAttack(1,3);
-    exampleBoard.recieveAttack(10,9);
-    exampleBoard.recieveAttack(9,7);
+    exampleBoard.receiveAttack(5,5);
+    exampleBoard.receiveAttack(1,1);
+    exampleBoard.receiveAttack(1,2);
+    exampleBoard.receiveAttack(1,3);
+    exampleBoard.receiveAttack(10,9);
+    exampleBoard.receiveAttack(9,7);
 
     expect(exampleBoard.checkAllSunk()).toBe(true)
   })
 
   test('all ships not sunk with extra missing attacks', () =>{
-    exampleBoard.recieveAttack(1,1);
-    exampleBoard.recieveAttack(1,2);
-    exampleBoard.recieveAttack(1,3);
-    exampleBoard.recieveAttack(10,9);
-    exampleBoard.recieveAttack(9,7);
+    exampleBoard.receiveAttack(1,1);
+    exampleBoard.receiveAttack(1,2);
+    exampleBoard.receiveAttack(1,3);
+    exampleBoard.receiveAttack(10,9);
+    exampleBoard.receiveAttack(9,7);
 
     expect(exampleBoard.checkAllSunk()).toBe(false)
   })
