@@ -1,5 +1,5 @@
 const ai = {
-  moveList: [],
+  moveList: [], 
 
   clearMoveList: () => {
     ai.moveList.splice(0, ai.moveList.length) // Clears the actual array rather than new array or leaving in memory
@@ -9,7 +9,7 @@ const ai = {
     return ai.moveList.every( i => (i.x !== x) || (i.y !== y))
   },
 
-  computerTurn: () => { // pushes 2 objects to moveList but why?
+  computerTurn: () => { 
     const validMoveFound = false
 
     while(!validMoveFound) {
