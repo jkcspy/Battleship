@@ -34,7 +34,11 @@ describe('tests for checkMove function', () => {
   })
 })
 
-describe('computerTurn adds move to moveList', () => {
+describe('computerTurn tests', () => {
+  beforeEach(()=> {
+    ai.clearMoveList()
+  })
+
   test('check one move added to list', ()=>{
     ai.computerTurn()
     expect(ai.moveList.length).toBe(1)
@@ -44,8 +48,7 @@ describe('computerTurn adds move to moveList', () => {
     ai.computerTurn()
     ai.computerTurn()
     expect(ai.moveList.length).toBe(2)
-  } )
-
+  })
 })
 
 describe('clear move list function', () => {
