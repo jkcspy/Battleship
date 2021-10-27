@@ -28,8 +28,8 @@ const gameLoop = () => {
     renderOpponentGrid()
     renderPlayerGrid()
   
-    if(gameCompleteCheck()){ // if func returns false recursion stops
-      setTimeout(gameLoop, 1000)
+    if(gameCompleteCheck()){ // if func returns false recursion reaches base case and stops
+      setTimeout(innerGameLoop, 1000) //JavaScript is single threaded so tradition while loop will block thread
     }
   }
 
