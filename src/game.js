@@ -29,7 +29,7 @@ const gameLoop = () => {
     renderPlayerGrid()
   
     if(gameCompleteCheck()){ // if func returns false recursion reaches base case and stops
-      setTimeout(innerGameLoop, 1000) //JavaScript is single threaded so tradition while loop will block thread
+      setTimeout(innerGameLoop, 1000) //JavaScript is single threaded so traditional while loop will block thread
     }
   }
 
