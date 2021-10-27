@@ -37,3 +37,15 @@ footer {
   height: 9%;
   width: 9%;
 }
+
+.miss {
+  background-color: orange;
+}
+
+.ship {
+  background-color: black;
+}
+
+.hit {
+  background-color: red;
+}
