@@ -1,14 +1,18 @@
 import { arrayTranslate } from "./utils"
+import ai from "./ai"
 
-const attackListeners = (gameBoardObject, playerObject) => {
+const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject, playerTwoObject) => {
   const grid = document.querySelector('.grid-2')
 
   const handler = e => {
     const dataIndex = parseInt(e.dataSet.index)
     const coordinatesObject = arrayTranslate(dataIndex)
     
-    playerObject.attack(coordinatesObject.x, coordinatesObject.y, gameBoardObject.gameBoard)
+    playerOneObject.attack(coordinatesObject.x, coordinatesObject.y, gameBoardTwoObject.gameBoard)
     removeEventListener('click', handler)
+
+    const aiCoordinates = ai.computerTurn()
+    playerTwoObject.attack(aiCoordinates.x, aiCoordinates.y, gameBoardOneObject)
   }
 
   grid.children.forEach(item => {
