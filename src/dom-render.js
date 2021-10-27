@@ -1,8 +1,8 @@
 const initRenderGrid = () => {
   const gridBoxHtml = document.createElement('div')
-  const grids = document.querySelectorAll('.grid')
+  const grids = document.querySelectorAll('.grid');
 
-  grids.forEach(grid => {
+  [...grids].forEach(grid => {
     for(let i = 0; i < 100; i++){
       const box = grid.appendChild(gridBoxHtml.cloneNode(true))
 
@@ -14,9 +14,9 @@ const initRenderGrid = () => {
 
 const renderPlayerGrid = (gameBoardObject) => {
   const grid = document.querySelector('.grid-1')
-  let count = 0
+  let count = 0;
 
-  grid.children.forEach(item => {
+  [...grid.children].forEach(item => {
     item.className = '' // clear classes from previous turns so that correct classes are on boxes for each turn.
     item.classList.add('box')
   })
@@ -37,9 +37,9 @@ const renderPlayerGrid = (gameBoardObject) => {
 
 const renderOpponentGrid = (gameBoardObject) => {
   const grid = document.querySelector('.grid-2')
-  let count = 0
+  let count = 0;
 
-  grid.children.forEach(item => {
+  [...grid.children].forEach(item => {
     item.className = ''
   })
 

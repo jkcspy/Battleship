@@ -15,7 +15,8 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
     playerTwoObject.attack(aiCoordinates.x, aiCoordinates.y, gameBoardOneObject)
   }
 
-  grid.children.forEach(item => {
+  
+  [...grid.children].forEach(item => {
     item.addEventListener('click', handler)
   })
 }
