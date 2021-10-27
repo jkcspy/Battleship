@@ -28,7 +28,7 @@ const gameCompleteCheck = (gameBoardOneObject, gameBoardTwoObject) => {
 const gameLoop = () => {
   const game = initGame()
 
-  attackListeners(game.playerTwoBoard, game.playerOne)
+  attackListeners(game.playerTwoBoard, game.playerOne, game.playerOneBoard, game.playerTwo)
 
   const innerGameLoop = (() => { 
     renderOpponentGrid(game.playerTwoBoard.gameBoard)
