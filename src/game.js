@@ -17,17 +17,23 @@ const initGame = () => {
   return { playerOne, playerOneBoard, playerTwo, playerTwoBoard }
 }
 
-const gameLoop = () => {
-  // init 
-  const newGame = initGame()
-  const game = true //for terminating loop
+const gameCompleteCheck = () => {
 
-  //loop
-  while(game){
-    //inputs
-    //update
-    //render
-    renderPlayerGrid()
-    renderOpponentGrid()
-  }
 }
+
+const gameLoop = () => {
+  initGame()
+
+  const innerGameLoop = () => { 
+    renderOpponentGrid()
+    renderPlayerGrid()
+  
+    if(gameCompleteCheck()){ // if func returns false recursion stops
+      setTimeout(gameLoop, 1000)
+    }
+  }
+
+  innerGameLoop()
+}
+
+export { gameLoop }
