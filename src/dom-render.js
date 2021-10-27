@@ -5,7 +5,9 @@ const initRenderGrid = () => {
   grids.forEach(grid => {
     for(let i = 0; i < 100; i++){
       const box = grid.appendChild(gridBoxHtml.cloneNode(true))
+      
       box.setAttribute('data-index', i) // so that DOM grid can be linked to gameBoard array
+      box.classList.add('box')
     }
   })
 }
@@ -16,6 +18,7 @@ const renderPlayerGrid = (gameBoardObject) => {
 
   grid.children.forEach(item => {
     item.className = '' // clear classes from previous turns
+    item.classList.add('box')
   })
 
   gameBoardObject.gameBoard.forEach(item => {
