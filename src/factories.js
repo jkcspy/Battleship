@@ -1,4 +1,4 @@
-import coordinateTranslate from "./utils"
+import { coordinateTranslate } from "./utils"
 
 const shipFactory = (length) => {
   const hitBoard = new Array(length).fill(0)
