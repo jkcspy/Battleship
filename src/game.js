@@ -1,5 +1,6 @@
 import { playerFactory, gameBoardFactory } from "./factories";
 import { renderPlayerGrid, renderOpponentGrid } from "./dom-render";
+import attackListeners from "./dom-listeners";
 
 const initGame = () => {
   const playerOne = playerFactory('Player 1')
@@ -22,14 +23,16 @@ const gameCompleteCheck = () => {
 }
 
 const gameLoop = () => {
-  initGame()
+  const game = initGame()
+
+  attackListeners(game.playerTwoBoard, game.playerOne)
 
   const innerGameLoop = () => { 
-    renderOpponentGrid()
-    renderPlayerGrid()
+    renderOpponentGrid(game.playerTwoBoard.gameBoard)
+    renderPlayerGrid(game.playerOneBoard.gameBoard)
   
-    if(gameCompleteCheck()){ // if func returns false recursion reaches base case and stops
-      setTimeout(innerGameLoop, 1000) //JavaScript is single threaded so traditional while loop will block thread
+    if(gameCompleteCheck()){ // if func returns false recursion reaches base case and stops.
+      setTimeout(innerGameLoop, 1000) // JavaScript is single threaded so traditional while loop will block thread.
     }
   }
 
