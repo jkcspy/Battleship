@@ -31,8 +31,8 @@ const gameLoop = () => {
   attackListeners(game.playerTwoBoard, game.playerOne, game.playerOneBoard, game.playerTwo)
 
   const innerGameLoop = (() => { 
-    renderOpponentGrid(game.playerTwoBoard.gameBoard)
-    renderPlayerGrid(game.playerOneBoard.gameBoard)
+    renderOpponentGrid(game.playerTwoBoard)
+    renderPlayerGrid(game.playerOneBoard)
   
     if(gameCompleteCheck(game.playerOneBoard.gameBoard, game.playerTwoBoard.gameBoard)) { 
       // if func returns false recursion reaches base case and stops.
