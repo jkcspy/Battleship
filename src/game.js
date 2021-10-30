@@ -30,7 +30,7 @@ const gameLoop = () => {
 
   attackListeners(game.playerTwoBoard, game.playerOne, game.playerOneBoard, game.playerTwo)
 
-  const innerGameLoop = (() => { 
+  const innerGameLoop = () => {
     renderOpponentGrid(game.playerTwoBoard)
     renderPlayerGrid(game.playerOneBoard)
   
@@ -38,7 +38,9 @@ const gameLoop = () => {
       // if func returns false recursion reaches base case and stops.
       setTimeout(innerGameLoop, 1000) // JavaScript is single threaded so traditional while loop will block thread.
     }
-  })()
+  }
+  innerGameLoop()
+  alert('game complete')
 }
 
 export { gameLoop, initGame, gameCompleteCheck }
