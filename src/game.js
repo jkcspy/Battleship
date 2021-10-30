@@ -36,11 +36,10 @@ const gameLoop = () => {
   
     if(gameCompleteCheck(game.playerOneBoard, game.playerTwoBoard)) { 
       // if func returns false recursion reaches base case and stops.
-      setTimeout(innerGameLoop, 1000) // JavaScript is single threaded so traditional while loop will block thread.
+      setTimeout(innerGameLoop, 100) // JavaScript is single threaded so traditional while loop will block thread.
     }
   }
   innerGameLoop()
-  alert('game complete')
 }
 
 export { gameLoop, initGame, gameCompleteCheck }
