@@ -41,6 +41,7 @@ const renderOpponentGrid = (gameBoardObject) => {
 
   [...grid.children].forEach(item => {
     item.className = ''
+    item.classList.add('box')
   })
 
   gameBoardObject.gameBoard.forEach(item => {
