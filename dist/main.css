@@ -29,13 +29,15 @@ footer {
 
   display: flex;
   flex-wrap: wrap;
+
+  background-color: rgba(24, 115, 218, 0.781);
 }
 
 .box {
   border: 1px solid black;
 
-  height: 9%;
-  width: 9%;
+  height: 9.5%;
+  width: 9.5%;
 }
 
 .miss {
