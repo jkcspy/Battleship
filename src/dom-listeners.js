@@ -9,7 +9,7 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
     const coordinatesObject = arrayTranslate(dataIndex)
     
     playerOneObject.attack(coordinatesObject.x, coordinatesObject.y, gameBoardTwoObject)
-    removeEventListener('click', handler)
+    e.target.removeEventListener('click', handler)
 
     const aiCoordinates = ai.computerTurn()
     playerTwoObject.attack(aiCoordinates.x, aiCoordinates.y, gameBoardOneObject)
