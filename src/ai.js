@@ -13,8 +13,8 @@ const ai = {
     const validMoveFound = false
 
     while(!validMoveFound) {
-      const x = Math.round(Math.random()*10)
-      const y = Math.round(Math.random()*10)
+      const x = Math.ceil(Math.random()*10) // ceil to avoid rounding down to zero
+      const y = Math.ceil(Math.random()*10)
 
       if(ai.checkMove(x,y)) {
         ai.validMoveFound = true
