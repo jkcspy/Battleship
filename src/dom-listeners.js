@@ -5,10 +5,10 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
   const grid = document.querySelector('.grid-2')
 
   const handler = e => {
-    const dataIndex = parseInt(e.dataSet.index)
+    const dataIndex = parseInt(e.target.dataset.index)
     const coordinatesObject = arrayTranslate(dataIndex)
     
-    playerOneObject.attack(coordinatesObject.x, coordinatesObject.y, gameBoardTwoObject.gameBoard)
+    playerOneObject.attack(coordinatesObject.x, coordinatesObject.y, gameBoardTwoObject)
     removeEventListener('click', handler)
 
     const aiCoordinates = ai.computerTurn()
