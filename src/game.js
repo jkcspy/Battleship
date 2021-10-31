@@ -1,6 +1,6 @@
 import { playerFactory, gameBoardFactory } from "./factories";
 import { renderPlayerGrid, renderOpponentGrid } from "./dom-render";
-import attackListeners from "./dom-listeners";
+import { attackListeners } from "./dom-listeners";
 
 const initGame = () => {
   const playerOne = playerFactory('Player 1')
