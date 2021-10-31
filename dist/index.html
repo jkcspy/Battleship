@@ -10,13 +10,20 @@
   <audio src="audio/a-pirate39s-life-8035.mp3" autoplay loop></audio>
   <header><div>Battleship</div></header>
 
+  <div class="message"> Place your carrier</div>
+  <div><input type="text" id="x-input"> <label for="x-input">x</label></div>
+  <div><input type="text" id="y-input"> <label for="y-input">y</label></div>
+  <div class="direction"><button>Down</button></div>
+  <button class="view">View Placement</button>
+  <button class="confirm">Confirm Placement</button>
+
   <div class="modal-ship-placement">
     <div class="grid placement-grid"></div>
   </div>
 
   <main>
-    <div class="grid grid-1"></div>
-    <div class="grid grid-2"></div>
+    <div class="grid grid-1" style="display: none;"></div>
+    <div class="grid grid-2" style="display: none;"></div>
   </main>
 
   <footer>Created by James Spencer</footer>
