@@ -21,6 +21,16 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
   })
 }
 
+const directionButtonListener = () => {
 
+}
 
-export default attackListeners
+const viewButtonListener = () => {
+
+}
+
+const confirmButtonListener = () => {
+  
+}
+
+export { attackListeners } 
