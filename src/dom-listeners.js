@@ -114,20 +114,4 @@ const confirmButtonListener = (buttonsObject) => {
   shipPlacementData.push({ shipType, direction, x, y })
 }
 
-const shipLengthGridCheck = (length) => {
-  const grid = document.querySelector('.placement-grid')
-  const shipBoxArray = [];
-
-  [...grid.children].forEach(item => {
-    if (item.classList.contains('ship')) {
-      shipBoxArray.push(item)
-    }
-  })
-
-  if (shipBoxArray.length === length) {
-    return true
-  }
-  return false
-}
-
 export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, buttonsObject }
