@@ -76,6 +76,8 @@ const viewButtonListener = (buttonsObject) => {
     viewButtonListenerLogic(coordinatesObject)
 
     if (coordinatesObject.shipIndex.every(item => item >= 0 && item < 100)) {
+      // TODO: split off into helper function
+      // TODO: stop ships being placed from 10-11 20-21 etc...
       coordinatesObject.shipIndex.forEach(item => {
         gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
       })
@@ -118,6 +120,7 @@ const confirmButtonListener = (buttonsObject) => {
 
   buttonsObject.confirmButton.addEventListener('click', () => {
     // TODO: do not allow click to do anything unless view listener clicked
+    // TODO: when last ship placement done reveal game play boards
     const shipType = message.dataset.ship
 
     shipPlacementData.push({ shipType, direction, x, y })
