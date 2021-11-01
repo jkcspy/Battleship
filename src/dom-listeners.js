@@ -62,43 +62,45 @@ const buttonsObject = {
 
 const viewButtonListener = (buttonsObject) => {
   buttonsObject.viewButton.addEventListener('click', () => {
-    const x = parseInt(buttonsObject.xInput.value)
-    const y = parseInt(buttonsObject.yInput.value)
-    const direction = buttonsObject.directionButton.innerHTML.toLowerCase()
+    const coordinatesObject = {
+      x: parseInt(buttonsObject.xInput.value),
+      y: parseInt(buttonsObject.yInput.value),
+      direction: buttonsObject.directionButton.innerHTML.toLowerCase()
+    }
     const shipIndex = []
     const grid = document.querySelector('.placement-grid')
-    let gridBoxArray = []
+    const gridBoxArray = []
 
-    // TODO split conditional logic into own function
-    if(direction === 'down'){
-      for(let i = 0; i < shipTypeCheck(); i++){
-        shipIndex.push(coordinateTranslate(x,y+i))
-      }
-    } 
-    if(direction === 'up'){
-      for(let i = 0; i < shipTypeCheck(); i++){
-        shipIndex.push(coordinateTranslate(x,y-i))
-      }
-    } 
-    if(direction === 'right'){
-      for(let i = 0; i < shipTypeCheck(); i++){
-        shipIndex.push(coordinateTranslate(x+i,y))
-      }
-    } 
-    if(direction === 'left'){
-      for(let i = 0; i < shipTypeCheck(); i++){
-        shipIndex.push(coordinateTranslate(x-i,y))
-      }
-    } 
+    viewButtonListenerLogic(coordinatesObject)
 
     shipIndex.forEach(item => {
-      gridBoxArray.push(grid.querySelector(`[data-index='${item}'`)) 
+      gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
     })
 
-    gridBoxArray.forEach( item => {
+    gridBoxArray.forEach(item => {
       item.classList.add('ship')
     })
   })
+}
+
+const viewButtonListenerLogic = (coordinatesObject) => {
+  if (coordinatesObject.direction === 'down') {
+    for (let i = 0; i < shipTypeCheck(); i++) {
+      coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x, coordinatesObject.y + i))
+    }
+  } else if (coordinatesObject.direction === 'up') {
+    for (let i = 0; i < shipTypeCheck(); i++) {
+      coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x, coordinatesObject.y - i))
+    }
+  } else if (coordinatesObject.direction === 'right') {
+    for (let i = 0; i < shipTypeCheck(); i++) {
+      coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x + i, coordinatesObject.y))
+    }
+  } else if (coordinatesObject.direction === 'left') {
+    for (let i = 0; i < shipTypeCheck(); i++) {
+      coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x - i, coordinatesObject.y))
+    }
+  }
 }
 
 const confirmButtonListener = (buttonsObject) => {
@@ -106,10 +108,11 @@ const confirmButtonListener = (buttonsObject) => {
   const shipType = document.querySelector('.message').dataset.ship
   const x = buttonsObject.xInput.value
   const y = buttonsObject.yInput.value
-  
 
   if (shipType === 'carrier') {
-    if (shipLengthGridCheck(5)){}
+    if (shipLengthGridCheck(5)) {
+      
+    }
   }
 
   shipPlacementData.push({ shipType, direction, x, y })
@@ -118,7 +121,7 @@ const confirmButtonListener = (buttonsObject) => {
 const shipLengthGridCheck = (length) => {
   const grid = document.querySelector('.placement-grid')
   const shipBoxArray = [];
-  
+
   [...grid.children].forEach(item => {
     if (item.classList.contains('ship')) {
       shipBoxArray.push(item)
@@ -131,4 +134,4 @@ const shipLengthGridCheck = (length) => {
   return false
 }
 
-export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, shipLengthGridCheck, buttonsObject }
+export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, buttonsObject }
