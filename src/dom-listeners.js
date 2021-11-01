@@ -23,7 +23,19 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
 }
 
 const muteButtonListener = () => {
+  const muteButton = document.querySelector('.mute')
+  const audio = document.querySelector('.audio')
 
+  muteButton.addEventListener('click', () => {
+    console.log('hello')
+    if(muteButton.innerHTML === 'Un-Mute'){
+      muteButton.innerHTML = 'Mute'
+      audio.muted = false
+    }else {
+      muteButton.innerHTML = 'Un-Mute'
+      audio.muted = true
+    }
+  })
 }
 
 const directionButtonListener = (buttonsObject) => {
