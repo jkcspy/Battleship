@@ -12,4 +12,18 @@ const arrayTranslate = (index) => {
   return { x, y }
 }
 
-export { coordinateTranslate, arrayTranslate }
+const shipTypeCheck = () => {
+  const messageDiv = document.querySelector('.message')
+  const shipType = messageDiv.dataset.ship
+  const shipTable = {
+    'carrier': 5,
+    'battleship': 4,
+    'cruiser': 3,
+    'submarine': 3,
+    'destroyer': 2,
+  }
+
+  return shipTable[shipType]
+} 
+
+export { coordinateTranslate, arrayTranslate, shipTypeCheck }
