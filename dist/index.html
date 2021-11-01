@@ -8,23 +8,26 @@
 </head>
 <body>
   <audio class="audio" src="audio/a-pirate39s-life-8035.mp3" autoplay loop muted></audio>
-  <header><div>Battleship</div><button class="mute">Un-Mute</button></header>
   
-  <div class="message" data-ship="carrier"> Place your carrier</div>
-  <div>
-    <input type="number" id="x-input" min="1" max="10"> 
-    <label for="x-input">x</label>
-  </div>
-  <div>
-    <input type="number" id="y-input" min="1" max="10"> 
-    <label for="y-input">y</label>
-  </div>
-  <button class="direction" >Up</button>
-  <button class="view">View Placement</button>
-  <button class="confirm">Confirm Placement</button>
+  <header><div>Battleship</div><button class="mute">Un-Mute</button></header>
 
-  <div class="modal-ship-placement">
-    <div class="grid placement-grid"></div>
+  <div class="placement-interface">
+    <div class="message" data-ship="carrier"> Place your carrier</div>
+    <div>
+      <input type="number" id="x-input" min="1" max="10"> 
+      <label for="x-input">x</label>
+    </div>
+    <div>
+      <input type="number" id="y-input" min="1" max="10"> 
+      <label for="y-input">y</label>
+    </div>
+    <button class="direction" >Up</button>
+    <button class="view">View Placement</button>
+    <button class="confirm">Confirm Placement</button>
+
+    <div class="modal-ship-placement">
+      <div class="grid placement-grid"></div>
+    </div>
   </div>
 
   <main>
