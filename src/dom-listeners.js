@@ -62,6 +62,7 @@ const buttonsObject = {
 const shipArray = ['carrier', 'battleship', 'cruiser', 'submarine', 'destroyer']
 
 const viewButtonListener = (buttonsObject) => {
+  // TODO: do not allow to be clicked again before clearing or confirming placement
   buttonsObject.viewButton.addEventListener('click', () => {
     const coordinatesObject = {
       x: parseInt(buttonsObject.xInput.value),
@@ -74,7 +75,7 @@ const viewButtonListener = (buttonsObject) => {
 
     viewButtonListenerLogic(coordinatesObject)
 
-    if (coordinatesObject.shipIndex.every(item => item > 0 && item < 100)) {
+    if (coordinatesObject.shipIndex.every(item => item >= 0 && item < 100)) {
       coordinatesObject.shipIndex.forEach(item => {
         gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
       })
@@ -86,6 +87,7 @@ const viewButtonListener = (buttonsObject) => {
     } else { alert('Try again that is not a valid placement') }
   })
 }
+// TODO: add clear button and listener
 
 const viewButtonListenerLogic = (coordinatesObject) => {
   if (coordinatesObject.direction === 'down') {
@@ -117,7 +119,7 @@ const confirmButtonListener = (buttonsObject) => {
   buttonsObject.confirmButton.addEventListener('click', () => {
     // TODO: do not allow click to do anything unless view listener clicked
     const shipType = message.dataset.ship
-    
+
     shipPlacementData.push({ shipType, direction, x, y })
     count++
     message.dataset.ship = shipArray[count]
