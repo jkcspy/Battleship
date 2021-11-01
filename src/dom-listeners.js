@@ -59,6 +59,8 @@ const buttonsObject = {
   confirmButton: document.querySelector('.confirm')
 }
 
+const shipArray = ['carrier', 'battleship', 'cruiser', 'submarine', 'destroyer']
+
 const viewButtonListener = (buttonsObject) => {
   buttonsObject.viewButton.addEventListener('click', () => {
     const coordinatesObject = {
@@ -106,13 +108,20 @@ const viewButtonListenerLogic = (coordinatesObject) => {
 }
 
 const confirmButtonListener = (buttonsObject) => {
+  let count = 0
   const direction = buttonsObject.directionButton.innerHTML.toLowerCase()
-  const shipType = document.querySelector('.message').dataset.ship
+  const message = document.querySelector('.message')
   const x = buttonsObject.xInput.value
   const y = buttonsObject.yInput.value
 
   buttonsObject.confirmButton.addEventListener('click', () => {
+    // TODO: do not allow click to do anything unless view listener clicked
+    const shipType = message.dataset.ship
+    
     shipPlacementData.push({ shipType, direction, x, y })
+    count++
+    message.dataset.ship = shipArray[count]
+    message.innerHTML = `Place your ${shipArray[count]}`
   })
 }
 
