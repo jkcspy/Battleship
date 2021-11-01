@@ -53,10 +53,11 @@ const directionButtonListener = (buttonsObject) => {
 }
 
 const buttonsObject = {
-  viewButton : document.querySelector('.view'),
-  xInput : document.querySelector('#x-input'),
-  yInput : document.querySelector('#y-input'),
-  directionButton : document.querySelector('.direction')
+  viewButton: document.querySelector('.view'),
+  xInput: document.querySelector('#x-input'),
+  yInput: document.querySelector('#y-input'),
+  directionButton: document.querySelector('.direction'),
+  confirmButton: document.querySelector('.confirm')
 }
 
 const viewButtonListener = (buttonsObject) => {
@@ -68,6 +69,7 @@ const viewButtonListener = (buttonsObject) => {
     const grid = document.querySelector('.placement-grid')
     let gridBoxArray = []
 
+    // TODO split conditional logic into own function
     if(direction === 'down'){
       for(let i = 0; i < shipTypeCheck(); i++){
         shipIndex.push(coordinateTranslate(x,y+i))
@@ -99,8 +101,34 @@ const viewButtonListener = (buttonsObject) => {
   })
 }
 
-const confirmButtonListener = () => {
-   shipPlacementData.push()
+const confirmButtonListener = (buttonsObject) => {
+  const direction = buttonsObject.directionButton.innerHTML.toLowerCase()
+  const shipType = document.querySelector('.message').dataset.ship
+  const x = buttonsObject.xInput.value
+  const y = buttonsObject.yInput.value
+  
+
+  if (shipType === 'carrier') {
+    if (shipLengthGridCheck(5)){}
+  }
+
+  shipPlacementData.push({ shipType, direction, x, y })
 }
 
-export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, buttonsObject } 
+const shipLengthGridCheck = (length) => {
+  const grid = document.querySelector('.placement-grid')
+  const shipBoxArray = [];
+  
+  [...grid.children].forEach(item => {
+    if (item.classList.contains('ship')) {
+      shipBoxArray.push(item)
+    }
+  })
+
+  if (shipBoxArray.length === length) {
+    return true
+  }
+  return false
+}
+
+export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, shipLengthGridCheck, buttonsObject }
