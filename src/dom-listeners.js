@@ -23,11 +23,22 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
 }
 
 const muteButtonListener = () => {
-  
+
 }
 
-const directionButtonListener = () => {
+const directionButtonListener = (buttonsObject) => {
+  let count = 0
+  const directions = ['Up', 'Down', 'Left', 'Right']
 
+  buttonsObject.directionButton.addEventListener('click', () => {
+    if(count < 3) {
+      count++
+      buttonsObject.directionButton.innerHTML = directions[count]
+    }else { 
+      count = 0
+      buttonsObject.directionButton.innerHTML = directions[count]
+    }
+  })
 }
 
 const buttonsObject = {
@@ -81,4 +92,4 @@ const confirmButtonListener = () => {
    shipPlacementData.push()
 }
 
-export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, buttonsObject } 
+export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, buttonsObject } 
