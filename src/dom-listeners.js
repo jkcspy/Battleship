@@ -111,7 +111,9 @@ const confirmButtonListener = (buttonsObject) => {
   const x = buttonsObject.xInput.value
   const y = buttonsObject.yInput.value
 
-  shipPlacementData.push({ shipType, direction, x, y })
+  buttonsObject.confirmButton.addEventListener('click', () => {
+    shipPlacementData.push({ shipType, direction, x, y })
+  })
 }
 
 export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, buttonsObject }
