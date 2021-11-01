@@ -64,15 +64,15 @@ const viewButtonListener = (buttonsObject) => {
     const coordinatesObject = {
       x: parseInt(buttonsObject.xInput.value),
       y: parseInt(buttonsObject.yInput.value),
-      direction: buttonsObject.directionButton.innerHTML.toLowerCase()
+      direction: buttonsObject.directionButton.innerHTML.toLowerCase(),
+      shipIndex: []
     }
-    const shipIndex = []
     const grid = document.querySelector('.placement-grid')
     const gridBoxArray = []
 
     viewButtonListenerLogic(coordinatesObject)
 
-    shipIndex.forEach(item => {
+    coordinatesObject.shipIndex.forEach(item => {
       gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
     })
 
