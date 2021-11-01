@@ -117,16 +117,25 @@ const confirmButtonListener = (buttonsObject) => {
   const message = document.querySelector('.message')
   const x = buttonsObject.xInput.value
   const y = buttonsObject.yInput.value
+  const placementInterface = document.querySelector('.placement-interface')
+  const gridOne = document.querySelector('.grid-1')
+  const gridTwo = document.querySelector('.grid-2')
 
   buttonsObject.confirmButton.addEventListener('click', () => {
     // TODO: do not allow click to do anything unless view listener clicked
-    // TODO: when last ship placement done reveal game play boards
     const shipType = message.dataset.ship
 
-    shipPlacementData.push({ shipType, direction, x, y })
-    count++
-    message.dataset.ship = shipArray[count]
-    message.innerHTML = `Place your ${shipArray[count]}`
+    if (shipType === 'destroyer') {
+      shipPlacementData.push({ shipType, direction, x, y })
+      placementInterface.style.display = 'none'
+      gridOne.style.display = 'flex'
+      gridTwo.style.display = 'flex'
+    } else {
+      shipPlacementData.push({ shipType, direction, x, y })
+      count++
+      message.dataset.ship = shipArray[count]
+      message.innerHTML = `Place your ${shipArray[count]}`
+    }
   })
 }
 
