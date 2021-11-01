@@ -27,7 +27,6 @@ const muteButtonListener = () => {
   const audio = document.querySelector('.audio')
 
   muteButton.addEventListener('click', () => {
-    console.log('hello')
     if(muteButton.innerHTML === 'Un-Mute'){
       muteButton.innerHTML = 'Mute'
       audio.muted = false
