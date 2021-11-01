@@ -1,4 +1,5 @@
 import { arrayTranslate, coordinateTranslate, shipTypeCheck } from "./utils"
+import { shipPlacementData } from "./placement"
 import ai from "./ai"
 
 const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject, playerTwoObject) => {
@@ -19,6 +20,10 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
   [...grid.children].forEach(item => {
     item.addEventListener('click', handler)
   })
+}
+
+const muteButtonListener = () => {
+  
 }
 
 const directionButtonListener = () => {
@@ -73,7 +78,7 @@ const viewButtonListener = (buttonsObject) => {
 }
 
 const confirmButtonListener = () => {
-
+   shipPlacementData.push()
 }
 
 export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, buttonsObject } 
