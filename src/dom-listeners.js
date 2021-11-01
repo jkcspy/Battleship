@@ -1,6 +1,6 @@
-import { arrayTranslate, coordinateTranslate, shipTypeCheck } from "./utils"
-import { shipPlacementData } from "./placement"
-import ai from "./ai"
+import { arrayTranslate, coordinateTranslate, shipTypeCheck } from './utils'
+import { shipPlacementData } from './placement'
+import ai from './ai'
 
 const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject, playerTwoObject) => {
   const grid = document.querySelector('.grid-2')
@@ -8,7 +8,7 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
   const handler = e => {
     const dataIndex = parseInt(e.target.dataset.index)
     const coordinatesObject = arrayTranslate(dataIndex)
-    
+
     playerOneObject.attack(coordinatesObject.x, coordinatesObject.y, gameBoardTwoObject)
     e.target.removeEventListener('click', handler)
 
@@ -16,7 +16,6 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
     playerTwoObject.attack(aiCoordinates.x, aiCoordinates.y, gameBoardOneObject)
   }
 
-  
   [...grid.children].forEach(item => {
     item.addEventListener('click', handler)
   })
@@ -27,10 +26,10 @@ const muteButtonListener = () => {
   const audio = document.querySelector('.audio')
 
   muteButton.addEventListener('click', () => {
-    if(muteButton.innerHTML === 'Un-Mute'){
+    if (muteButton.innerHTML === 'Un-Mute') {
       muteButton.innerHTML = 'Mute'
       audio.muted = false
-    }else {
+    } else {
       muteButton.innerHTML = 'Un-Mute'
       audio.muted = true
     }
@@ -42,10 +41,10 @@ const directionButtonListener = (buttonsObject) => {
   const directions = ['Up', 'Down', 'Left', 'Right']
 
   buttonsObject.directionButton.addEventListener('click', () => {
-    if(count < 3) {
+    if (count < 3) {
       count++
       buttonsObject.directionButton.innerHTML = directions[count]
-    }else { 
+    } else {
       count = 0
       buttonsObject.directionButton.innerHTML = directions[count]
     }

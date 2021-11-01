@@ -1,6 +1,6 @@
-import { playerFactory, gameBoardFactory } from "./factories";
-import { renderPlayerGrid, renderOpponentGrid } from "./dom-render";
-import { attackListeners } from "./dom-listeners";
+import { playerFactory, gameBoardFactory } from './factories'
+import { renderPlayerGrid, renderOpponentGrid } from './dom-render'
+import { attackListeners } from './dom-listeners'
 
 const initGame = () => {
   const playerOne = playerFactory('Player 1')
@@ -12,8 +12,8 @@ const initGame = () => {
 }
 
 const gameCompleteCheck = (gameBoardOneObject, gameBoardTwoObject) => {
-  if(gameBoardOneObject.checkAllSunk()) { return false }
-  if(gameBoardTwoObject.checkAllSunk()) { return false }
+  if (gameBoardOneObject.checkAllSunk()) { return false }
+  if (gameBoardTwoObject.checkAllSunk()) { return false }
 
   return true
 }
@@ -26,8 +26,8 @@ const gameLoop = () => {
   const innerGameLoop = () => {
     renderOpponentGrid(game.playerTwoBoard)
     renderPlayerGrid(game.playerOneBoard)
-  
-    if(gameCompleteCheck(game.playerOneBoard, game.playerTwoBoard)) { 
+
+    if (gameCompleteCheck(game.playerOneBoard, game.playerTwoBoard)) {
       // if func returns false recursion reaches base case and stops.
       setTimeout(innerGameLoop, 100) // JavaScript is single threaded so traditional while loop will block thread.
     }

@@ -1,8 +1,8 @@
-import { coordinateTranslate } from "./utils"
+import { coordinateTranslate } from './utils'
 
 const shipFactory = (length) => {
   const hitBoard = new Array(length).fill(0)
-  const sunk = [false] // this works as array is mutable but primitive is not and obj on gameboard is a reference.
+  const sunk = [false] // this works as array is mutable but primitive is not and obj on game board is a reference.
 
   const isSunk = () => {
     sunk[0] = hitBoard.every(x => x === 1)
@@ -22,18 +22,18 @@ const gameBoardFactory = () => {
   const placeShip = (x, y, length, direction) => {
     const ship = shipFactory(length)
 
-     switch (direction) {
-      case 'up': 
-      for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x,y-i)] = {hitIndex: i, isHit: false, ship: ship} }
+    switch (direction) {
+      case 'up':
+        for (let i = 0; i <= length; i++) { gameBoard[coordinateTranslate(x, y - i)] = { hitIndex: i, isHit: false, ship: ship } }
         break
       case 'down':
-        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x,y+i)] = {hitIndex: i, isHit: false, ship: ship} }
+        for (let i = 0; i <= length; i++) { gameBoard[coordinateTranslate(x, y + i)] = { hitIndex: i, isHit: false, ship: ship } }
         break
       case 'left':
-        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x-i,y)] = {hitIndex: i, isHit: false, ship: ship} }
+        for (let i = 0; i <= length; i++) { gameBoard[coordinateTranslate(x - i, y)] = { hitIndex: i, isHit: false, ship: ship } }
         break
       case 'right':
-        for (let i = 0; i <= length; i++){ gameBoard[coordinateTranslate(x+i,y)] = {hitIndex: i, isHit: false, ship: ship} }
+        for (let i = 0; i <= length; i++) { gameBoard[coordinateTranslate(x + i, y)] = { hitIndex: i, isHit: false, ship: ship } }
         break
       default:
         console.log('Error:invalid direction for ship placement')
@@ -41,11 +41,11 @@ const gameBoardFactory = () => {
   }
 
   const receiveAttack = (x, y) => {
-    if (gameBoard[coordinateTranslate(x,y)] === '') {
-      gameBoard[coordinateTranslate(x,y)] = 'x'
-    }else {
-      gameBoard[coordinateTranslate(x,y)].ship.hit(gameBoard[coordinateTranslate(x,y)].hitIndex)
-      gameBoard[coordinateTranslate(x,y)].isHit = true
+    if (gameBoard[coordinateTranslate(x, y)] === '') {
+      gameBoard[coordinateTranslate(x, y)] = 'x'
+    } else {
+      gameBoard[coordinateTranslate(x, y)].ship.hit(gameBoard[coordinateTranslate(x, y)].hitIndex)
+      gameBoard[coordinateTranslate(x, y)].isHit = true
     }
   }
 
@@ -59,8 +59,8 @@ const gameBoardFactory = () => {
 }
 
 const playerFactory = (name) => {
-  const attack = (x,y,targetBoard) => {
-    targetBoard.receiveAttack(x,y)
+  const attack = (x, y, targetBoard) => {
+    targetBoard.receiveAttack(x, y)
   }
 
   return { name, attack }
