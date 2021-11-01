@@ -72,13 +72,16 @@ const viewButtonListener = (buttonsObject) => {
 
     viewButtonListenerLogic(coordinatesObject)
 
-    coordinatesObject.shipIndex.forEach(item => {
-      gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
-    })
-
-    gridBoxArray.forEach(item => {
-      item.classList.add('ship')
-    })
+    if (coordinatesObject.shipIndex.every(item => item > 0 && item < 100)) {
+      coordinatesObject.shipIndex.forEach(item => {
+        gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
+      })
+      if (gridBoxArray.every(item => !item.classList.contains('ship'))) {
+        gridBoxArray.forEach(item => {
+          item.classList.add('ship')
+        })
+      } else { alert('Try again that is not a valid placement') }
+    } else { alert('Try again that is not a valid placement') }
   })
 }
 
@@ -107,12 +110,6 @@ const confirmButtonListener = (buttonsObject) => {
   const shipType = document.querySelector('.message').dataset.ship
   const x = buttonsObject.xInput.value
   const y = buttonsObject.yInput.value
-
-  if (shipType === 'carrier') {
-    if (shipLengthGridCheck(5)) {
-      
-    }
-  }
 
   shipPlacementData.push({ shipType, direction, x, y })
 }
