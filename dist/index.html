@@ -9,9 +9,17 @@
 <body>
   <audio class="audio" src="audio/a-pirate39s-life-8035.mp3" autoplay loop muted></audio>
   
-  <header><div>Battleship</div><button class="mute">Un-Mute</button></header>
-
-  <div class="placement-interface">
+  <header>
+    <div>Battleship</div>
+    <button class="mute">Un-Mute</button>
+    <button class="restart">Restart</button>
+  </header>
+  <div class="start-game-container">
+    <label for="user-name">Enter your name:</label>
+    <input type="text" id="user-name">
+    <button class="start-game">Start Game</button>
+  </div>
+  <div class="placement-interface" style="display: none;">
     <div class="message" data-ship="carrier"> Place your carrier</div>
     <div>
       <input type="number" id="x-input" min="1" max="10"> 
