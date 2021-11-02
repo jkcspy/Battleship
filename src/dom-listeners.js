@@ -1,6 +1,7 @@
 import { arrayTranslate, coordinateTranslate, shipTypeCheck } from './utils'
 import { shipPlacementData } from './placement'
 import ai from './ai'
+import { gameLoop } from './game'
 
 const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject, playerTwoObject) => {
   const grid = document.querySelector('.grid-2')
@@ -113,25 +114,26 @@ const viewButtonListenerLogic = (coordinatesObject) => {
 
 const confirmButtonListener = (buttonsObject) => {
   let count = 0
-  const direction = buttonsObject.directionButton.innerHTML.toLowerCase()
   const message = document.querySelector('.message')
-  const x = buttonsObject.xInput.value
-  const y = buttonsObject.yInput.value
   const placementInterface = document.querySelector('.placement-interface')
   const gridOne = document.querySelector('.grid-1')
   const gridTwo = document.querySelector('.grid-2')
 
   buttonsObject.confirmButton.addEventListener('click', () => {
     // TODO: do not allow click to do anything unless view listener clicked
-    const shipType = message.dataset.ship
+    const length = shipTypeCheck()
+    const x = parseInt(buttonsObject.xInput.value)
+    const y = parseInt(buttonsObject.yInput.value)
+    const direction = buttonsObject.directionButton.innerHTML.toLowerCase()
 
-    if (shipType === 'destroyer') {
-      shipPlacementData.push({ shipType, direction, x, y })
+    if (message.dataset.ship === 'destroyer') {
+      shipPlacementData.push({ length, direction, x, y })
       placementInterface.style.display = 'none'
       gridOne.style.display = 'flex'
       gridTwo.style.display = 'flex'
+      gameLoop()
     } else {
-      shipPlacementData.push({ shipType, direction, x, y })
+      shipPlacementData.push({ length, direction, x, y })
       count++
       message.dataset.ship = shipArray[count]
       message.innerHTML = `Place your ${shipArray[count]}`
