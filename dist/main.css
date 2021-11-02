@@ -62,7 +62,7 @@ footer {
   background-color: red;
 }
 
-.modal-ship-placement {
+.modal-ship-placement, .start-game-container {
   position: absolute;
   left: 50%;
   top: 75%;
