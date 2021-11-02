@@ -22,6 +22,20 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
   })
 }
 
+// TODO: add restart event listener
+
+const startGameListener = () => {
+  const startButton = document.querySelector('.start-game')
+  const startContainer = document.querySelector('.start-game-container')
+  const placementInterface = document.querySelector('.placement-interface')
+
+  startButton.addEventListener('click', () => {
+    // TODO: pass input name to be used in other parts of app.
+    startContainer.style.display = 'none'
+    placementInterface.style.display = 'block'
+  })
+}
+
 const muteButtonListener = () => {
   const muteButton = document.querySelector('.mute')
   const audio = document.querySelector('.audio')
@@ -141,4 +155,4 @@ const confirmButtonListener = (buttonsObject) => {
   })
 }
 
-export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, buttonsObject }
+export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, startGameListener, buttonsObject }
