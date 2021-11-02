@@ -11,11 +11,11 @@ const initGame = () => {
 
   placePlayerShips(playerOneBoard)
   // TODO: function for placing AI ships
-  playerTwoBoard.placeShip(1,1,5,'down')
-  playerTwoBoard.placeShip(2,1,4,'down')
-  playerTwoBoard.placeShip(3,1,3,'right')
-  playerTwoBoard.placeShip(2,9,3,'right')
-  playerTwoBoard.placeShip(5,5,2,'down')
+  playerTwoBoard.placeShip(1, 1, 5, 'down')
+  playerTwoBoard.placeShip(2, 1, 4, 'down')
+  playerTwoBoard.placeShip(3, 1, 3, 'right')
+  playerTwoBoard.placeShip(2, 9, 3, 'right')
+  playerTwoBoard.placeShip(5, 5, 2, 'down')
 
   return { playerOne, playerOneBoard, playerTwo, playerTwoBoard }
 }
