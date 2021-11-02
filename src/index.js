@@ -1,9 +1,9 @@
-import { viewButtonListener, buttonsObject, directionButtonListener, muteButtonListener } from './dom-listeners'
+import { viewButtonListener, buttonsObject, directionButtonListener, muteButtonListener, confirmButtonListener, startGameListener } from './dom-listeners'
 import { initRenderGrid } from './dom-render'
-import { gameLoop } from './game'
 
 initRenderGrid()
 viewButtonListener(buttonsObject)
 directionButtonListener(buttonsObject)
+confirmButtonListener(buttonsObject)
 muteButtonListener()
-gameLoop()
+startGameListener()
