@@ -11,6 +11,7 @@ const initGame = () => {
 
   placePlayerShips(playerOneBoard)
   // TODO: function for placing AI ships
+  // Why are these ships 1 extra space than they should be?
   playerTwoBoard.placeShip(1, 1, 5, 'down')
   playerTwoBoard.placeShip(2, 1, 4, 'down')
   playerTwoBoard.placeShip(3, 1, 3, 'right')
