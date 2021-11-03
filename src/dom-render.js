@@ -22,7 +22,6 @@ const renderPlayerGrid = (gameBoardObject) => {
   })
 
   gameBoardObject.gameBoard.forEach(item => {
-    // TODO: add sunk class
     if (item === 'x') {
       grid.children[count].classList.add('miss')
     }
@@ -30,6 +29,10 @@ const renderPlayerGrid = (gameBoardObject) => {
       grid.children[count].classList.add('ship')
       if (item.isHit === true) {
         grid.children[count].classList.add('hit')
+      }
+      if (item.ship.sunk[0] === true) {
+        grid.children[count].classList.add('sunk')
+        grid.children[count].innerHTML = 'X'
       }
     }
     count++
@@ -46,12 +49,17 @@ const renderOpponentGrid = (gameBoardObject) => {
   })
 
   gameBoardObject.gameBoard.forEach(item => {
-    // TODO: add sunk class
     if (item === 'x') {
       grid.children[count].classList.add('miss')
     }
     if (item.isHit === true) {
       grid.children[count].classList.add('hit')
+    }
+    if (typeof item === 'object') {
+      if (item.ship.sunk[0] === true) {
+        grid.children[count].classList.add('sunk')
+        grid.children[count].innerHTML = 'X'
+      }
     }
     count++
   })
