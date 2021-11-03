@@ -3,6 +3,16 @@ import { shipPlacementData } from './placement'
 import ai from './ai'
 import { gameLoop } from './game'
 
+const buttonsObject = {
+  viewButton: document.querySelector('.view'),
+  xInput: document.querySelector('#x-input'),
+  yInput: document.querySelector('#y-input'),
+  directionButton: document.querySelector('.direction'),
+  confirmButton: document.querySelector('.confirm')
+}
+
+const shipArray = ['carrier', 'battleship', 'cruiser', 'submarine', 'destroyer']
+
 const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject, playerTwoObject) => {
   const grid = document.querySelector('.grid-2')
 
@@ -75,16 +85,6 @@ const directionButtonListener = (buttonsObject) => {
   })
 }
 
-const buttonsObject = {
-  viewButton: document.querySelector('.view'),
-  xInput: document.querySelector('#x-input'),
-  yInput: document.querySelector('#y-input'),
-  directionButton: document.querySelector('.direction'),
-  confirmButton: document.querySelector('.confirm')
-}
-
-const shipArray = ['carrier', 'battleship', 'cruiser', 'submarine', 'destroyer']
-
 const viewButtonListener = (buttonsObject) => {
   buttonsObject.viewButton.addEventListener('click', () => {
     const coordinatesObject = {
@@ -96,30 +96,31 @@ const viewButtonListener = (buttonsObject) => {
     const grid = document.querySelector('.placement-grid')
     const gridBoxArray = []
 
-    viewButtonListenerLogic(coordinatesObject)
-
-    if (coordinatesObject.shipIndex.every(item => item >= 0 && item < 100)) {
-      // TODO: split off into helper function
-      // TODO: stop ships being placed from 10-11 20-21 etc...
-      coordinatesObject.shipIndex.forEach(item => {
-        gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
-      })
-      if (gridBoxArray.every(item => !item.classList.contains('ship'))) {
-        gridBoxArray.forEach(item => {
-          item.classList.add('ship')
-        })
-        buttonsObject.xInput.disabled = true
-        buttonsObject.yInput.disabled = true
-        buttonsObject.directionButton.disabled = true
-        buttonsObject.viewButton.disabled = true
-        buttonsObject.confirmButton.disabled = false
-      } else { alert('Try again that is not a valid placement') }
-    } else { alert('Try again that is not a valid placement') }
+    shipPlacementLogic(coordinatesObject)
+    placementCheckLogic(coordinatesObject, gridBoxArray, grid)
   })
 }
-// TODO: add clear button and listener
 
-const viewButtonListenerLogic = (coordinatesObject) => {
+const placementCheckLogic = (coordinatesObject, gridBoxArray, grid) => {
+  if (coordinatesObject.shipIndex.every(item => item >= 0 && item < 100)) {
+    // TODO: stop ships being placed from 10-11 20-21 etc...
+    coordinatesObject.shipIndex.forEach(item => {
+      gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
+    })
+    if (gridBoxArray.every(item => !item.classList.contains('ship'))) {
+      gridBoxArray.forEach(item => {
+        item.classList.add('ship')
+      })
+      buttonsObject.xInput.disabled = true
+      buttonsObject.yInput.disabled = true
+      buttonsObject.directionButton.disabled = true
+      buttonsObject.viewButton.disabled = true
+      buttonsObject.confirmButton.disabled = false
+    } else { alert('Try again that is not a valid placement') }
+  } else { alert('Try again that is not a valid placement') }
+}
+
+const shipPlacementLogic = (coordinatesObject) => {
   if (coordinatesObject.direction === 'down') {
     for (let i = 0; i < shipTypeCheck(); i++) {
       coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x, coordinatesObject.y + i))
@@ -171,6 +172,7 @@ const confirmButtonListener = (buttonsObject) => {
     }
   })
 }
+// TODO: add clear button and listener
 
 const attachAllEventListeners = (buttonsObject) => {
   viewButtonListener(buttonsObject)
