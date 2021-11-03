@@ -21,17 +21,20 @@
   </div>
   <div class="placement-interface" style="display: none;">
     <div class="message" data-ship="carrier"> Place your carrier</div>
-    <div>
+    <div class="x-container">
+      <div class="x-block block"></div> 
+      <!--block class can get toggled on and off to temporarily block listeners-->
       <input type="number" id="x-input" min="1" max="10"> 
       <label for="x-input">x</label>
     </div>
-    <div>
+    <div class="y-container">
+      <div class="y-block block"></div>
       <input type="number" id="y-input" min="1" max="10"> 
       <label for="y-input">y</label>
     </div>
-    <button class="direction" >Up</button>
-    <button class="view">View Placement</button>
-    <button class="confirm">Confirm Placement</button>
+    <button class="direction" >Up<div class="direction-block block"></div></button>
+    <button class="view">View Placement<div class="view-block block"></div></button>
+    <button class="confirm">Confirm Placement <div class="confirm-block block"></div></button>
 
     <div class="modal-ship-placement">
       <div class="grid placement-grid"></div>
