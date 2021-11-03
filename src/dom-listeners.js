@@ -162,6 +162,12 @@ const confirmButtonListener = (buttonsObject) => {
       placementInterface.style.display = 'none'
       gridOne.style.display = 'flex'
       gridTwo.style.display = 'flex'
+      buttonsObject.xInput.disabled = false
+      buttonsObject.yInput.disabled = false
+      buttonsObject.directionButton.disabled = false
+      buttonsObject.viewButton.disabled = false
+      buttonsObject.confirmButton.disabled = true
+      buttonsObject.clearButton.disabled = true
       gameLoop()
     } else {
       shipPlacementData.push({ length, direction, x, y })
