@@ -68,12 +68,3 @@ footer {
   top: 75%;
   transform: translate(-50%, -50%);
 }
-
-.block {
-  z-index: 1;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-
-  display: none;
-}
