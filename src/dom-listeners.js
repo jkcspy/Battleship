@@ -86,7 +86,6 @@ const buttonsObject = {
 const shipArray = ['carrier', 'battleship', 'cruiser', 'submarine', 'destroyer']
 
 const viewButtonListener = (buttonsObject) => {
-  // TODO: do not allow to be clicked again before clearing or confirming placement
   buttonsObject.viewButton.addEventListener('click', () => {
     const coordinatesObject = {
       x: parseInt(buttonsObject.xInput.value),
@@ -148,7 +147,6 @@ const confirmButtonListener = (buttonsObject) => {
   const gridTwo = document.querySelector('.grid-2')
 
   buttonsObject.confirmButton.addEventListener('click', () => {
-    // TODO: do not allow click to do anything unless view listener clicked
     const length = shipTypeCheck()
     const x = parseInt(buttonsObject.xInput.value)
     const y = parseInt(buttonsObject.yInput.value)
@@ -174,4 +172,13 @@ const confirmButtonListener = (buttonsObject) => {
   })
 }
 
-export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, startGameListener, restartEventListener, buttonsObject }
+const attachAllEventListeners = (buttonsObject) => {
+  viewButtonListener(buttonsObject)
+  directionButtonListener(buttonsObject)
+  confirmButtonListener(buttonsObject)
+  muteButtonListener()
+  startGameListener()
+  restartEventListener()
+}
+
+export { attackListeners, attachAllEventListeners, buttonsObject }
