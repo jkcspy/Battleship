@@ -159,7 +159,7 @@ const confirmButtonListener = (buttonsObject) => {
       placementInterface.style.display = 'none'
       gridOne.style.display = 'flex'
       gridTwo.style.display = 'flex'
-      togglePlacementButtonsOn()
+      togglePlacementButtonsOn(buttonsObject)
       gameLoop()
     } else {
       shipPlacementData.push({ length, direction, x, y })
