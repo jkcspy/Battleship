@@ -22,15 +22,24 @@ const attackListeners = (gameBoardTwoObject, playerOneObject, gameBoardOneObject
   })
 }
 
-// TODO: add restart event listener
+const restartEventListener = () => {
+  const restartButton = document.querySelector('.restart')
+
+  restartButton.addEventListener('click', () => {
+    location.reload()
+  })
+}
 
 const startGameListener = () => {
   const startButton = document.querySelector('.start-game')
   const startContainer = document.querySelector('.start-game-container')
   const placementInterface = document.querySelector('.placement-interface')
+  const nameHolder = document.querySelector('.title')
+  const name = document.querySelector('#user-name')
 
   startButton.addEventListener('click', () => {
-    // TODO: pass input name to be used in other parts of app.
+    nameHolder.setAttribute('data-name', name.value)
+    name.value = ''
     startContainer.style.display = 'none'
     placementInterface.style.display = 'block'
   })
@@ -155,4 +164,4 @@ const confirmButtonListener = (buttonsObject) => {
   })
 }
 
-export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, startGameListener, buttonsObject }
+export { attackListeners, directionButtonListener, viewButtonListener, confirmButtonListener, muteButtonListener, startGameListener, restartEventListener, buttonsObject }
