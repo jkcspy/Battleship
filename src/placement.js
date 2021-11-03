@@ -1,4 +1,4 @@
-const shipPlacementData = [] // array to hold coordinates objects for ship placement
+const shipPlacementData = []
 
 const placePlayerShips = gameBoardObject => {
   shipPlacementData.forEach(item => {
