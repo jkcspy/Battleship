@@ -109,6 +109,11 @@ const viewButtonListener = (buttonsObject) => {
         gridBoxArray.forEach(item => {
           item.classList.add('ship')
         })
+        buttonsObject.xInput.disabled = true
+        buttonsObject.yInput.disabled = true
+        buttonsObject.directionButton.disabled = true
+        buttonsObject.viewButton.disabled = true
+        buttonsObject.confirmButton.disabled = false
       } else { alert('Try again that is not a valid placement') }
     } else { alert('Try again that is not a valid placement') }
   })
@@ -160,6 +165,11 @@ const confirmButtonListener = (buttonsObject) => {
       count++
       message.dataset.ship = shipArray[count]
       message.innerHTML = `Place your ${shipArray[count]}`
+      buttonsObject.xInput.disabled = false
+      buttonsObject.yInput.disabled = false
+      buttonsObject.directionButton.disabled = false
+      buttonsObject.viewButton.disabled = false
+      buttonsObject.confirmButton.disabled = true
     }
   })
 }
