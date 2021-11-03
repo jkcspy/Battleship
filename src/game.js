@@ -40,7 +40,7 @@ const gameLoop = () => {
       // if func returns false recursion reaches base case and stops.
       setTimeout(innerGameLoop, 100) // JavaScript is single threaded so traditional while loop will block thread.
     } else {
-      if (game.playerOneBoard.checkAllSunk()) {
+      if (game.playerTwoBoard.checkAllSunk()) {
         alert('The day is ours. All enemy ships have been sunk')
       } else { alert('All is lost. Our fleet is destroyed') }
     }
