@@ -11,7 +11,6 @@ const initGame = () => {
 
   placePlayerShips(playerOneBoard)
   // TODO: function for placing AI ships
-  // Why are these ships 1 extra space than they should be?
   playerTwoBoard.placeShip(1, 1, 5, 'down')
   playerTwoBoard.placeShip(2, 1, 4, 'down')
   playerTwoBoard.placeShip(3, 1, 3, 'right')
@@ -40,6 +39,10 @@ const gameLoop = () => {
     if (gameCompleteCheck(game.playerOneBoard, game.playerTwoBoard)) {
       // if func returns false recursion reaches base case and stops.
       setTimeout(innerGameLoop, 100) // JavaScript is single threaded so traditional while loop will block thread.
+    } else {
+      if (game.playerOneBoard.checkAllSunk()) {
+        alert('The day is ours. All enemy ships have been sunk')
+      } else { alert('All is lost. Our fleet is destroyed') }
     }
   }
   innerGameLoop()
