@@ -22,6 +22,7 @@ const renderPlayerGrid = (gameBoardObject) => {
   })
 
   gameBoardObject.gameBoard.forEach(item => {
+    // TODO: add sunk class
     if (item === 'x') {
       grid.children[count].classList.add('miss')
     }
@@ -45,6 +46,7 @@ const renderOpponentGrid = (gameBoardObject) => {
   })
 
   gameBoardObject.gameBoard.forEach(item => {
+    // TODO: add sunk class
     if (item === 'x') {
       grid.children[count].classList.add('miss')
     }
