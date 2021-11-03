@@ -25,4 +25,6 @@ const ai = {
   }
 }
 
+// TODO: Make better AI with hunt/target and parity
+
 export default ai
