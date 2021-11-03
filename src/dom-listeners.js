@@ -3,6 +3,8 @@ import { shipPlacementData } from './placement'
 import ai from './ai'
 import { gameLoop } from './game'
 
+// TODO: break up repeated code and large functions into smaller functions
+
 const buttonsObject = {
   viewButton: document.querySelector('.view'),
   xInput: document.querySelector('#x-input'),
@@ -113,12 +115,7 @@ const placementCheckLogic = (coordinatesObject, gridBoxArray, grid, buttonsObjec
         item.classList.add('ship')
         item.classList.add('await-confirm')
       })
-      buttonsObject.xInput.disabled = true
-      buttonsObject.yInput.disabled = true
-      buttonsObject.directionButton.disabled = true
-      buttonsObject.viewButton.disabled = true
-      buttonsObject.confirmButton.disabled = false
-      buttonsObject.clearButton.disabled = false
+      toggleConfirmButtonsOn(buttonsObject)
     } else { alert('Try again that is not a valid placement') }
   } else { alert('Try again that is not a valid placement') }
 }
@@ -162,24 +159,14 @@ const confirmButtonListener = (buttonsObject) => {
       placementInterface.style.display = 'none'
       gridOne.style.display = 'flex'
       gridTwo.style.display = 'flex'
-      buttonsObject.xInput.disabled = false
-      buttonsObject.yInput.disabled = false
-      buttonsObject.directionButton.disabled = false
-      buttonsObject.viewButton.disabled = false
-      buttonsObject.confirmButton.disabled = true
-      buttonsObject.clearButton.disabled = true
+      togglePlacementButtonsOn()
       gameLoop()
     } else {
       shipPlacementData.push({ length, direction, x, y })
       count++
       message.dataset.ship = shipArray[count]
       message.innerHTML = `Place your ${shipArray[count]}`
-      buttonsObject.xInput.disabled = false
-      buttonsObject.yInput.disabled = false
-      buttonsObject.directionButton.disabled = false
-      buttonsObject.viewButton.disabled = false
-      buttonsObject.confirmButton.disabled = true
-      buttonsObject.clearButton.disabled = true;
+      togglePlacementButtonsOn(buttonsObject);
 
       [...shipToConfirm].forEach(item => {
         item.classList.remove('await-confirm')
@@ -194,15 +181,26 @@ const clearButtonListener = (buttonsObject) => {
     [...shipToConfirm].forEach(item => {
       item.classList.remove('ship')
       item.classList.remove('await-confirm')
-
-      buttonsObject.xInput.disabled = false
-      buttonsObject.yInput.disabled = false
-      buttonsObject.directionButton.disabled = false
-      buttonsObject.viewButton.disabled = false
-      buttonsObject.confirmButton.disabled = true
-      buttonsObject.clearButton.disabled = true
+      togglePlacementButtonsOn(buttonsObject)
     })
   })
+}
+
+const togglePlacementButtonsOn = buttonsObject => {
+  buttonsObject.xInput.disabled = false
+  buttonsObject.yInput.disabled = false
+  buttonsObject.directionButton.disabled = false
+  buttonsObject.viewButton.disabled = false
+  buttonsObject.confirmButton.disabled = true
+  buttonsObject.clearButton.disabled = true
+}
+const toggleConfirmButtonsOn = buttonsObject => {
+  buttonsObject.xInput.disabled = true
+  buttonsObject.yInput.disabled = true
+  buttonsObject.directionButton.disabled = true
+  buttonsObject.viewButton.disabled = true
+  buttonsObject.confirmButton.disabled = false
+  buttonsObject.clearButton.disabled = false
 }
 
 const attachAllEventListeners = (buttonsObject) => {
