@@ -8,7 +8,8 @@ const buttonsObject = {
   xInput: document.querySelector('#x-input'),
   yInput: document.querySelector('#y-input'),
   directionButton: document.querySelector('.direction'),
-  confirmButton: document.querySelector('.confirm')
+  confirmButton: document.querySelector('.confirm'),
+  clearButton: document.querySelector('.clear')
 }
 
 const shipArray = ['carrier', 'battleship', 'cruiser', 'submarine', 'destroyer']
@@ -97,11 +98,11 @@ const viewButtonListener = (buttonsObject) => {
     const gridBoxArray = []
 
     shipPlacementLogic(coordinatesObject)
-    placementCheckLogic(coordinatesObject, gridBoxArray, grid)
+    placementCheckLogic(coordinatesObject, gridBoxArray, grid, buttonsObject)
   })
 }
 
-const placementCheckLogic = (coordinatesObject, gridBoxArray, grid) => {
+const placementCheckLogic = (coordinatesObject, gridBoxArray, grid, buttonsObject) => {
   if (coordinatesObject.shipIndex.every(item => item >= 0 && item < 100)) {
     // TODO: stop ships being placed from 10-11 20-21 etc...
     coordinatesObject.shipIndex.forEach(item => {
@@ -110,12 +111,14 @@ const placementCheckLogic = (coordinatesObject, gridBoxArray, grid) => {
     if (gridBoxArray.every(item => !item.classList.contains('ship'))) {
       gridBoxArray.forEach(item => {
         item.classList.add('ship')
+        item.classList.add('await-confirm')
       })
       buttonsObject.xInput.disabled = true
       buttonsObject.yInput.disabled = true
       buttonsObject.directionButton.disabled = true
       buttonsObject.viewButton.disabled = true
       buttonsObject.confirmButton.disabled = false
+      buttonsObject.clearButton.disabled = false
     } else { alert('Try again that is not a valid placement') }
   } else { alert('Try again that is not a valid placement') }
 }
@@ -152,6 +155,7 @@ const confirmButtonListener = (buttonsObject) => {
     const x = parseInt(buttonsObject.xInput.value)
     const y = parseInt(buttonsObject.yInput.value)
     const direction = buttonsObject.directionButton.innerHTML.toLowerCase()
+    const shipToConfirm = document.querySelectorAll('.await-confirm')
 
     if (message.dataset.ship === 'destroyer') {
       shipPlacementData.push({ length, direction, x, y })
@@ -169,10 +173,31 @@ const confirmButtonListener = (buttonsObject) => {
       buttonsObject.directionButton.disabled = false
       buttonsObject.viewButton.disabled = false
       buttonsObject.confirmButton.disabled = true
+      buttonsObject.clearButton.disabled = true;
+
+      [...shipToConfirm].forEach(item => {
+        item.classList.remove('await-confirm')
+      })
     }
   })
 }
-// TODO: add clear button and listener
+const clearButtonListener = (buttonsObject) => {
+  buttonsObject.clearButton.addEventListener('click', () => {
+    const shipToConfirm = document.querySelectorAll('.await-confirm');
+
+    [...shipToConfirm].forEach(item => {
+      item.classList.remove('ship')
+      item.classList.remove('await-confirm')
+
+      buttonsObject.xInput.disabled = false
+      buttonsObject.yInput.disabled = false
+      buttonsObject.directionButton.disabled = false
+      buttonsObject.viewButton.disabled = false
+      buttonsObject.confirmButton.disabled = true
+      buttonsObject.clearButton.disabled = true
+    })
+  })
+}
 
 const attachAllEventListeners = (buttonsObject) => {
   viewButtonListener(buttonsObject)
@@ -181,6 +206,7 @@ const attachAllEventListeners = (buttonsObject) => {
   muteButtonListener()
   startGameListener()
   restartEventListener()
+  clearButtonListener(buttonsObject)
 }
 
 export { attackListeners, attachAllEventListeners, buttonsObject }
