@@ -58,6 +58,7 @@ const startGameListener = () => {
     startContainer.style.display = 'none'
     placementInterface.style.display = 'flex'
     audio.muted = false
+    audio.autoplay = true
     message.innerHTML = `
     Admiral ${nameHolder.dataset.name}, the enemy fleet approaches. What are your orders?
     Where should we position the carrier?
