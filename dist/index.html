@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="main-compiled.css">
 </head>
 <body>
   <audio class="audio" src="audio/a-pirate39s-life-8035.mp3" autoplay loop muted></audio>
@@ -14,34 +14,37 @@
     <button class="mute">Un-Mute</button>
     <button class="restart">Restart</button>
   </header>
-  <div class="start-game-container">
-    <label for="user-name">Enter your name:</label>
-    <input type="text" id="user-name">
-    <button class="start-game">Start Game</button>
-  </div>
-  <div class="placement-interface" style="display: none;">
-    <div class="message" data-ship="carrier"> Place your carrier</div>
-    <div class="x-container">
-      <input type="number" id="x-input" min="1" max="10"> 
-      <label for="x-input">x</label>
-    </div>
-    <div class="y-container">
-      <input type="number" id="y-input" min="1" max="10"> 
-      <label for="y-input">y</label>
-    </div>
-    <button class="direction" >Up</button>
-    <button class="view">View Placement</button>
-    <button class="clear" disabled="true">Clear</button>
-    <button class="confirm" disabled="true">Confirm Placement</button>
-
-    <div class="modal-ship-placement">
-      <div class="grid placement-grid"></div>
-    </div>
-  </div>
 
   <main>
+    <div class="start-game-container">
+      <label for="user-name">Enter your name:</label>
+      <input type="text" id="user-name">
+      <button class="start-game">Start Game</button>
+    </div>
     <div class="grid grid-1" style="display: none;"></div>
     <div class="grid grid-2" style="display: none;"></div>
+
+    <div class="placement-interface" style="display: none;">
+      <div class="message" data-ship="carrier"></div>
+      <div class="x-container">
+        <input type="number" id="x-input" min="1" max="10"> 
+        <label for="x-input">x</label>
+      </div>
+      <div class="y-container">
+        <input type="number" id="y-input" min="1" max="10"> 
+        <label for="y-input">y</label>
+      </div>
+      <div class="buttons">
+        <button class="direction" >Up</button>
+        <button class="view">View Placement</button>
+        <button class="clear" disabled="true">Clear</button>
+        <button class="confirm" disabled="true">Confirm Placement</button>
+      </div>
+      
+      <div class="modal-ship-placement">
+        <div class="grid placement-grid"></div>
+      </div>
+    </div>
   </main>
 
   <footer>Created by James Spencer</footer>
