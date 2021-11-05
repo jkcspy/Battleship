@@ -12,7 +12,7 @@
   <audio class="explosion-miss" src="audio/519008__sheyvan__water-explosion.wav"></audio>
   
   <header>
-    <div class="title">Battleship</div>
+    <div class="title">BATTLESHIP</div>
     <div class="main-buttons">
       <button class="mute">Un-Mute</button>
       <button class="restart">Restart</button>
@@ -25,9 +25,15 @@
       <input type="text" id="user-name">
       <button class="start-game">Start Game</button>
     </div>
-    <div class="grid grid-1" style="display: none;"></div>
-    <div class="grid grid-2" style="display: none;"></div>
-
+    <div class="play-container">
+      <div class="game-messages"></div>
+      <div class="play-game">
+        <div class="grid grid-1" style="display: none;"></div>
+        <div class="grid grid-2" style="display: none;"></div>
+      </div>
+    </div>
+    
+    
     <div class="placement-interface" style="display: none;">
       <div class="message" data-ship="carrier"></div>
       <div class="x-container">
@@ -44,7 +50,6 @@
         <button class="clear" disabled="true">Clear</button>
         <button class="confirm" disabled="true">Confirm Placement</button>
       </div>
-      
       <div class="modal-ship-placement">
         <div class="grid placement-grid"></div>
       </div>
