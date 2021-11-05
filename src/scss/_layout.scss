@@ -12,6 +12,7 @@ header {
 
   font-size: 100px;
 
+  text-shadow: 3px 3px black;
 }
 
 main {
@@ -31,4 +32,8 @@ footer {
   &>* {
     margin: 10px;
   }
+}
+
+.play-game {
+  @include base.flex-center(row)
 }
