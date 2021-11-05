@@ -50,6 +50,7 @@ const startGameListener = () => {
   const nameHolder = document.querySelector('.title')
   const name = document.querySelector('#user-name')
   const audio = document.querySelector('.audio')
+  const message = document.querySelector('.message')
 
   startButton.addEventListener('click', () => {
     nameHolder.setAttribute('data-name', name.value)
@@ -57,6 +58,10 @@ const startGameListener = () => {
     startContainer.style.display = 'none'
     placementInterface.style.display = 'flex'
     audio.muted = false
+    message.innerHTML = `
+    Admiral ${nameHolder.dataset.name}, the enemy fleet approaches. What are your orders?
+    Where should we position the carrier?
+    `
   })
 }
 
@@ -167,7 +172,7 @@ const confirmButtonListener = (buttonsObject) => {
       shipPlacementData.push({ length, direction, x, y })
       count++
       message.dataset.ship = shipArray[count]
-      message.innerHTML = `Place your ${shipArray[count]}`
+      message.innerHTML = `Where should we position the ${shipArray[count]}?`
       togglePlacementButtonsOn(buttonsObject);
 
       [...shipToConfirm].forEach(item => {
