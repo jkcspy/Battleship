@@ -49,12 +49,14 @@ const startGameListener = () => {
   const placementInterface = document.querySelector('.placement-interface')
   const nameHolder = document.querySelector('.title')
   const name = document.querySelector('#user-name')
+  const audio = document.querySelector('.audio')
 
   startButton.addEventListener('click', () => {
     nameHolder.setAttribute('data-name', name.value)
     name.value = ''
     startContainer.style.display = 'none'
     placementInterface.style.display = 'flex'
+    audio.muted = false
   })
 }
 
