@@ -54,7 +54,7 @@ const startGameListener = () => {
     nameHolder.setAttribute('data-name', name.value)
     name.value = ''
     startContainer.style.display = 'none'
-    placementInterface.style.display = 'block'
+    placementInterface.style.display = 'flex'
   })
 }
 
@@ -157,8 +157,8 @@ const confirmButtonListener = (buttonsObject) => {
     if (message.dataset.ship === 'destroyer') {
       shipPlacementData.push({ length, direction, x, y })
       placementInterface.style.display = 'none'
-      gridOne.style.display = 'flex'
-      gridTwo.style.display = 'flex'
+      gridOne.style.display = 'grid'
+      gridTwo.style.display = 'grid'
       togglePlacementButtonsOn(buttonsObject)
       gameLoop()
     } else {
