@@ -8,11 +8,15 @@
 </head>
 <body>
   <audio class="audio" src="audio/a-pirate39s-life-8035.mp3" autoplay loop muted></audio>
+  <audio class="explosion-hit" src="audio/388528__eflexmusic__artillery-explosion-close-mixed.wav"></audio>
+  <audio class="explosion-miss" src="audio/519008__sheyvan__water-explosion.wav"></audio>
   
   <header>
     <div class="title">Battleship</div>
-    <button class="mute">Un-Mute</button>
-    <button class="restart">Restart</button>
+    <div class="main-buttons">
+      <button class="mute">Un-Mute</button>
+      <button class="restart">Restart</button>
+    </div>
   </header>
 
   <main>
@@ -34,7 +38,7 @@
         <input type="number" id="y-input" min="1" max="10"> 
         <label for="y-input">y</label>
       </div>
-      <div class="buttons">
+      <div class="placement-buttons">
         <button class="direction" >Up</button>
         <button class="view">View Placement</button>
         <button class="clear" disabled="true">Clear</button>
