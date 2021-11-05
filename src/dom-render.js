@@ -32,7 +32,6 @@ const renderPlayerGrid = (gameBoardObject) => {
       }
       if (item.ship.sunk[0] === true) {
         grid.children[count].classList.add('sunk')
-        grid.children[count].innerHTML = 'X'
       }
     }
     count++
@@ -58,7 +57,6 @@ const renderOpponentGrid = (gameBoardObject) => {
     if (typeof item === 'object') {
       if (item.ship.sunk[0] === true) {
         grid.children[count].classList.add('sunk')
-        grid.children[count].innerHTML = 'X'
       }
     }
     count++
