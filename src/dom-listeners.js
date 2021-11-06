@@ -1,4 +1,4 @@
-import { arrayTranslate, coordinateTranslate, shipTypeCheck } from './utils'
+import { arrayTranslate, coordinateTranslate, shipTypeCheck, validDirectionCheck } from './utils'
 import { shipPlacementData } from './placement'
 import ai from './ai'
 import { gameLoop } from './game'
@@ -106,43 +106,46 @@ const viewButtonListener = (buttonsObject) => {
     }
     const grid = document.querySelector('.placement-grid')
     const gridBoxArray = []
+    const message = document.querySelector('.message')
+    const shipType = message.dataset.ship
 
-    shipPlacementLogic(coordinatesObject)
-    placementCheckLogic(coordinatesObject, gridBoxArray, grid, buttonsObject)
+    shipPlacementLogic(coordinatesObject, shipType)
+    placementCheckLogic(coordinatesObject, gridBoxArray, grid, buttonsObject, shipType)
   })
 }
 
-const placementCheckLogic = (coordinatesObject, gridBoxArray, grid, buttonsObject) => {
-  if (coordinatesObject.shipIndex.every(item => item >= 0 && item < 100)) {
-    // TODO: stop ships being placed from 10-11 20-21 etc...
-    coordinatesObject.shipIndex.forEach(item => {
-      gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
-    })
-    if (gridBoxArray.every(item => !item.classList.contains('ship'))) {
-      gridBoxArray.forEach(item => {
-        item.classList.add('ship')
-        item.classList.add('await-confirm')
+const placementCheckLogic = (coordinatesObject, gridBoxArray, grid, buttonsObject, shipType) => {
+  if (validDirectionCheck(coordinatesObject.x, coordinatesObject.y, coordinatesObject.direction, shipTypeCheck(shipType))) {
+    if (coordinatesObject.shipIndex.every(item => item >= 0 && item < 100)) {
+      coordinatesObject.shipIndex.forEach(item => {
+        gridBoxArray.push(grid.querySelector(`[data-index='${item}'`))
       })
-      toggleConfirmButtonsOn(buttonsObject)
+      if (gridBoxArray.every(item => !item.classList.contains('ship'))) {
+        gridBoxArray.forEach(item => {
+          item.classList.add('ship')
+          item.classList.add('await-confirm')
+        })
+        toggleConfirmButtonsOn(buttonsObject)
+      } else { alert('Try again that is not a valid placement') }
     } else { alert('Try again that is not a valid placement') }
   } else { alert('Try again that is not a valid placement') }
 }
 
-const shipPlacementLogic = (coordinatesObject) => {
+const shipPlacementLogic = (coordinatesObject, shipType) => {
   if (coordinatesObject.direction === 'down') {
-    for (let i = 0; i < shipTypeCheck(); i++) {
+    for (let i = 0; i < shipTypeCheck(shipType); i++) {
       coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x, coordinatesObject.y + i))
     }
   } else if (coordinatesObject.direction === 'up') {
-    for (let i = 0; i < shipTypeCheck(); i++) {
+    for (let i = 0; i < shipTypeCheck(shipType); i++) {
       coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x, coordinatesObject.y - i))
     }
   } else if (coordinatesObject.direction === 'right') {
-    for (let i = 0; i < shipTypeCheck(); i++) {
+    for (let i = 0; i < shipTypeCheck(shipType); i++) {
       coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x + i, coordinatesObject.y))
     }
   } else if (coordinatesObject.direction === 'left') {
-    for (let i = 0; i < shipTypeCheck(); i++) {
+    for (let i = 0; i < shipTypeCheck(shipType); i++) {
       coordinatesObject.shipIndex.push(coordinateTranslate(coordinatesObject.x - i, coordinatesObject.y))
     }
   }
