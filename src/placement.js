@@ -83,10 +83,14 @@ const addDirectionToCoordinates = (coordinates, direction, length) => {
   return coordinatesArray
 }
 
-const placementCheck = (array, checkArray) => {
+const placementCheck = (array, checkArray) => { // fix this
   array.forEach(element => {
-    checkArray.some(item => item.x === element.x && item.y === element.y)
+    const indexValue = checkArray.findIndex(item => item.x === element.x && item.y === element.y)
+
+    if (indexValue !== -1) { return true }
   })
+
+  return false
 }
 
 export { placePlayerShips, randomPlacementShips, shipPlacementData }
