@@ -26,4 +26,25 @@ const shipTypeCheck = () => {
   return shipTable[shipType]
 }
 
-export { coordinateTranslate, arrayTranslate, shipTypeCheck }
+const validDirectionCheck = (x, y, direction, length) => {
+  if (direction === 'up') {
+    if (y > length) {
+      return true
+    }
+  } else if (direction === 'down') {
+    if (y < length) {
+      return true
+    }
+  } else if (direction === 'left') {
+    if (x > length) {
+      return true
+    }
+  } else if (direction === 'right') {
+    if (x < length) {
+      return true
+    }
+  }
+  return false
+}
+
+export { coordinateTranslate, arrayTranslate, shipTypeCheck, validDirectionCheck }
