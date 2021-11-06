@@ -1,7 +1,7 @@
 import { playerFactory, gameBoardFactory } from './factories'
 import { renderPlayerGrid, renderOpponentGrid } from './dom-render'
 import { attackListeners } from './dom-listeners'
-import { placePlayerShips } from './placement'
+import { placePlayerShips, randomPlacementShips } from './placement'
 
 const initGame = () => {
   const playerOne = playerFactory('Player 1')
@@ -11,6 +11,7 @@ const initGame = () => {
 
   placePlayerShips(playerOneBoard)
   // TODO: function for placing AI ships
+  randomPlacementShips(playerTwoBoard)
   playerTwoBoard.placeShip(1, 1, 5, 'down')
   playerTwoBoard.placeShip(2, 1, 4, 'down')
   playerTwoBoard.placeShip(3, 1, 3, 'right')
