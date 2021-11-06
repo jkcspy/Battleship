@@ -1,4 +1,4 @@
-import ai from "./ai"
+import ai from './ai'
 
 const shipPlacementData = []
 
@@ -17,8 +17,8 @@ const randomPlacementShips = gameBoardObject => {
 
     while (!validMoveFound) {
       let validDirection = false
-      let randomCoordinates;
-      let direction;
+      let randomCoordinates
+      let direction
 
       while (!validDirection) {
         randomCoordinates = ai.computerTurn()
