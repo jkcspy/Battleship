@@ -20,7 +20,6 @@ const shipTypeCheck = (shipType) => {
     submarine: 3,
     destroyer: 2
   }
-
   return shipTable[shipType]
 }
 
