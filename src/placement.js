@@ -1,4 +1,5 @@
 import ai from './ai'
+import { validDirectionCheck } from './utils'
 
 const shipPlacementData = []
 
@@ -23,7 +24,7 @@ const randomPlacementShips = gameBoardObject => {
       while (!validDirection) {
         randomCoordinates = ai.computerTurn()
         direction = randomDirection()
-        if (validDirectionCheck(randomCoordinates.x, randomCoordinates.y, direction)) { validDirection = true }
+        if (validDirectionCheck(randomCoordinates.x, randomCoordinates.y, direction, i)) { validDirection = true }
       }
 
       const shipPlacementCoordinates = addDirectionToCoordinates(randomCoordinates, direction, i)
@@ -32,6 +33,9 @@ const randomPlacementShips = gameBoardObject => {
       if (!check) {
         gameBoardObject.placeShip(randomCoordinates.x, randomCoordinates.y, i, direction)
         validMoveFound = true
+        shipPlacementCoordinates.forEach(item => {
+          placementArray.push(item)
+        })
       }
 
       if (extraShipCheck === false && i === 3) {
@@ -79,26 +83,10 @@ const addDirectionToCoordinates = (coordinates, direction, length) => {
   return coordinatesArray
 }
 
-const placementCheck = (array, checkArray) => checkArray.some(item => array.includes(item))
-
-const validDirectionCheck = (x, y, direction) => {
-  if (direction === 'up') {
-    if (y > 5) {
-      return true
-    }
-  } else if (direction === 'down') {
-    if (y < 5) {
-      return true
-    }
-  } else if (direction === 'left') {
-    if (x > 5) {
-      return true
-    }
-  } else if (direction === 'right') {
-    if (x < 5) {
-      return true
-    }
-  }
-  return false
+const placementCheck = (array, checkArray) => {
+  array.forEach(element => {
+    checkArray.some(item => item.x === element.x && item.y === element.y)
+  })
 }
+
 export { placePlayerShips, randomPlacementShips, shipPlacementData }
