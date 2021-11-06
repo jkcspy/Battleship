@@ -159,7 +159,7 @@ const confirmButtonListener = (buttonsObject) => {
   const gridTwo = document.querySelector('.grid-2')
 
   buttonsObject.confirmButton.addEventListener('click', () => {
-    const length = shipTypeCheck()
+    const length = shipTypeCheck(message.dataset.ship)
     const x = parseInt(buttonsObject.xInput.value)
     const y = parseInt(buttonsObject.yInput.value)
     const direction = buttonsObject.directionButton.innerHTML.toLowerCase()
