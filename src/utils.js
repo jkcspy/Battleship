@@ -12,9 +12,7 @@ const arrayTranslate = (index) => {
   return { x, y }
 }
 
-const shipTypeCheck = () => {
-  const messageDiv = document.querySelector('.message')
-  const shipType = messageDiv.dataset.ship
+const shipTypeCheck = (shipType) => {
   const shipTable = {
     carrier: 5,
     battleship: 4,
