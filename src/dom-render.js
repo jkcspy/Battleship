@@ -63,4 +63,5 @@ const renderOpponentGrid = (gameBoardObject) => {
   })
 }
 
+// TODO: render messages to DOM rather than alerts
 export { initRenderGrid, renderPlayerGrid, renderOpponentGrid }
