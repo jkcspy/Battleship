@@ -4,7 +4,8 @@ A single player Battleship game web app. Built using TDD(unit testing) with Jest
 - [Access a live version here.](https://jkcswd.github.io/Battleship/)
 
 ## Demo
-(create gif of app being used)
+![Battleship Demo](https://github.com/jkcswd/Battleship/blob/main/README/Demo1.gif)
+![Battleship Demo](https://github.com/jkcswd/Battleship/blob/main/README/Demo2.gif)
 
 ## Tech
 - JavaScript
